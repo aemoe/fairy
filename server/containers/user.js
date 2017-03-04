@@ -1,10 +1,13 @@
 "use strict";
 import React from 'react';
-import {renderToString, renderToStaticMarkup} from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
 import {match, RouterContext} from 'react-router';
 import {layout} from '../view/layout.js';
 import routes from '../../client/src/route/router.js';
+import db from '../config/db.js';
 
+const User = db.User;
+console.log(User);
 //get page and switch json and html
 export function * index(next) {
     switch (this.accepts("json", "html")) {
@@ -19,7 +22,15 @@ export function * index(next) {
                     } else if (redirectLocation) {
                         console.log(302)
                     } else if (renderProps) {
-                        this.body = layout(renderToString(<RouterContext {...renderProps}/>), {});
+                        let user = User.find({
+                            attributes: [
+                                "uid", "username", "password"
+                            ],
+                            where: {
+                                uid: 1
+                            }
+                        });
+                        this.body = layout(renderToString(<RouterContext {...renderProps}/>), user);
                     } else {
                         console.log(404);
                     }
@@ -28,12 +39,15 @@ export function * index(next) {
             break;
         case "json":
             {
-                let callBackData = {
-                    'status': 200,
-                    'message': '这个是主页',
-                    'data': {}
-                };
-                this.body = callBackData;
+                let user = User.find({
+                    attributes: [
+                        "uid", "username", "password"
+                    ],
+                    where: {
+                        uid: 1
+                    }
+                });
+                this.body = user;
             }
             break;
         default:

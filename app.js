@@ -18,7 +18,7 @@ const path = require('path'),
     //加载koa日记模块
     logger = require('koa-logger'),
     serve = require('koa-static2'),
-    Index = require('./server/containers/index.js');
+    routers = require('./server/route/router.js');
 
 //初始化koa对象
 const App = () => {
@@ -29,8 +29,7 @@ const App = () => {
     //use static dir
     app.use(serve("dist", __dirname + "/public"));
     //路由
-    router.get('/', Index.index);
-    app.use(router.routes());
+    app.use(routers);
     return app;
 };
 

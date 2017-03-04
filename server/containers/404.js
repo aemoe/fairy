@@ -1,6 +1,6 @@
 "use strict";
 import React from 'react';
-import {renderToString, renderToStaticMarkup} from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
 import {match, RouterContext} from 'react-router';
 import {layout} from '../view/layout.js';
 import routes from '../../client/src/route/router.js';
