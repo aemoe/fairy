@@ -3,7 +3,10 @@ import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import {Link} from 'react-router';
 
-export default class Demo extends Component {
+import '../dist/css/reset.css';
+import '../dist/css/style.css';
+
+export default class App extends Component {
     render() {
         return (
             <div>

@@ -25,7 +25,7 @@ const path = require('path'),
 //srcDir为当前开发目录(默认:/src)
 const srcDir = path.resolve(process.cwd(), 'src');
 //assetsDir为当前建立目录(默认:/assets)
-const assetsDir = path.resolve(process.cwd(), 'assets');
+const assetsDir = path.resolve(process.cwd(), '../public');
 //读取入口的js文件目录(本目录只能对应页面的入口的JS,其他脚本需要写在/dist/plugins中)
 const jsEntryDir = path.resolve(srcDir, 'dist/js');
 //生成JS的目录地址(默认:)
@@ -36,7 +36,7 @@ const cssDir = 'dist/css/';
 const config = {
     devtool: 'source-map',
     entry: {
-        index: ['webpack-hot-middleware/client', 'react-hot-loader/patch', './src/index.js']
+        index: './src/index.js'
     },
     output: {
         path: assetsDir,
@@ -109,7 +109,6 @@ const config = {
             chunks: ['index'],
             filename: 'index.html'
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     ]
 };

@@ -1,3 +1,3 @@
 # Fairy
 
-#### Gift to a cat that her name is Fairy Mo.
+#### As a gift to a cat that her called Fairy Mo.

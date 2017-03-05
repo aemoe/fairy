@@ -1,13 +1,18 @@
 'use strict'
-require('babel-polyfill');
 // Node babel source map support
 require("source-map-support").install()
 // Javascript require hook
-require('babel-core/register', {
-    // Optional ignore regex - if any filenames **do** match this regex then they
-    // aren't compiled.
-    ignore: /(.css|.less)$/
+require('babel-core/register', {ignore: /.css$/});
+require('babel-polyfill');
+// Image required hook
+require('asset-require-hook')({
+    extensions: [
+        'jpg', 'png', 'gif', 'webp'
+    ],
+    limit: 8000
 });
+//Css modules hook
+require('css-modules-require-hook')({generateScopedName: '[name]_[local]_[hash:base64:3]'});
 
 //加载koa服务器模块
 const path = require('path'),
@@ -27,7 +32,7 @@ const App = () => {
     //使用logger日志库
     app.use(logger());
     //use static dir
-    app.use(serve("dist", __dirname + "/public"));
+    app.use(serve("", __dirname + "/public"));
     //路由
     app.use(routers);
     return app;

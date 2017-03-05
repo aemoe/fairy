@@ -8,7 +8,10 @@ exports.layout = function(content, data) {
     <meta charset="UTF-8">
   </head>
   <body>
-    <div id="root">${content}</div>
+    <div id="root"><div>${content}</div></div>
+  <script>
+  window.__REDUX_DATA__ = ${JSON.stringify(data)};
+  </script>
   <script src="/dist/js/index.js"></script>
   </body>
   </html>

@@ -7,9 +7,9 @@ import {
     IndexRoute,
     createMemoryHistory
 } from 'react-router';
-import Home from '../../../client/src/view/home.js';
-import Page404 from '../../../client/src/view/404.js';
-import User from '../../../client/src/view/user.js';
+import Home from '../view/home.js';
+import Page404 from '../view/404.js';
+import User from '../view/user.js';
 
 const Routers = (
     <Router history={browserHistory}>

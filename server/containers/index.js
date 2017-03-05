@@ -3,7 +3,9 @@ import React from 'react';
 import {renderToString, renderToStaticMarkup} from 'react-dom/server';
 import {match, RouterContext} from 'react-router';
 import {layout} from '../view/layout.js';
+import {Provider} from 'react-redux';
 import routes from '../../client/src/route/router.js';
+import configureStore from '../../client/src/store/store.js';
 
 //get page and switch json and html
 export function * index(next) {
@@ -19,7 +21,17 @@ export function * index(next) {
                     } else if (redirectLocation) {
                         console.log(302)
                     } else if (renderProps) {
-                        this.body = layout(renderToString(<RouterContext {...renderProps}/>), {});
+                        const store = configureStore();
+                        console.log(renderToString(
+                            <Provider store={store}>
+                                <RouterContext {...renderProps}/>
+                            </Provider>
+                        ));
+                        this.body = layout(renderToString(
+                            <Provider store={store}>
+                                <RouterContext {...renderProps}/>
+                            </Provider>
+                        ), store.getState());
                     } else {
                         console.log(404);
                     }
