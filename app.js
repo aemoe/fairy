@@ -41,11 +41,11 @@ const App = () => {
 //Creat koa server and listen at 8000
 var creatServer = () => {
     const app = App();
-    app.listen(8000, function(err) {
+    app.listen(3000, function(err) {
         if (err) {
             console.log(err);
         }
-        console.log('Listening at localhost:8000');
+        console.log('Listening at localhost:3000');
     });
 };
 

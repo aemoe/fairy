@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 export default function(sequelize, DataTypes) {
     var User = sequelize.define('user', {
@@ -10,9 +10,7 @@ export default function(sequelize, DataTypes) {
         },
         username: DataTypes.STRING,
         password: DataTypes.STRING
-    }, {
-        freezeTableName: true
-    });
+    }, {freezeTableName: true});
 
     return User;
 };

@@ -36,7 +36,7 @@ const cssDir = 'dist/css/';
 const config = {
     devtool: 'source-map',
     entry: {
-        index: ['webpack-hot-middleware/client', 'react-hot-loader/patch', './src/index.js']
+        index: ['eventsource-polyfill', 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.js']
     },
     output: {
         path: assetsDir,
@@ -78,7 +78,10 @@ const config = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: "babel-loader"
+                        loader: "babel-loader",
+                        options: {
+                            presets: ['react-hmre']
+                        }
                     }
                 ]
             }, {

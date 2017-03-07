@@ -4,7 +4,8 @@
     "description": "Gitf to a cat that her name is Fairy Mo.",
     "main": "index.js",
     "scripts": {
-        "start": "node ./app.js"
+        "dev": "node ./app.js",
+        "start": "cd client && npm run build && cd ../ && node ./app.js"
     },
     "author": "aemoe",
     "license": "MIT",

@@ -28,7 +28,9 @@ var creatServer = () => {
         }
     }));
     app.use(webpackHotMiddleware(compiler), {
-        log: () => {}
+        log: console.log,
+        path: '/__webpack_hmr',
+        heartbeat: 10 * 1000
     });
     //调用koa列出开发目录
     app.use(require('koa-serve-index')(path.join(process.cwd(), '/src')));

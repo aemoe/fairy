@@ -5,14 +5,24 @@ import {match, RouterContext} from 'react-router';
 import {layout} from '../view/layout.js';
 import routes from '../../client/src/route/router.js';
 import db from '../config/db.js';
+import configureStore from '../../client/src/store/store.js';
 
 const User = db.User;
-console.log(User);
+
 //get page and switch json and html
-export function * index(next) {
+let index = function * index(next) {
     switch (this.accepts("json", "html")) {
         case "html":
             {
+                let user = yield User.find({
+                    attributes: [
+                        "uid", "username", "password"
+                    ],
+                    where: {
+                        uid: 1
+                    }
+                });
+
                 match({
                     routes,
                     location: this.url
@@ -22,15 +32,9 @@ export function * index(next) {
                     } else if (redirectLocation) {
                         console.log(302)
                     } else if (renderProps) {
-                        let user = User.find({
-                            attributes: [
-                                "uid", "username", "password"
-                            ],
-                            where: {
-                                uid: 1
-                            }
-                        });
-                        this.body = layout(renderToString(<RouterContext {...renderProps}/>), user);
+                        const store = configureStore({data: user});
+                        console.log(store.getState());
+                        this.body = layout(renderToString(<RouterContext {...renderProps}/>), {a: 1});
                     } else {
                         console.log(404);
                     }
@@ -59,3 +63,4 @@ export function * index(next) {
     }
 
 };
+export {index};

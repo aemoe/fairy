@@ -22,11 +22,6 @@ export function * index(next) {
                         console.log(302)
                     } else if (renderProps) {
                         const store = configureStore();
-                        console.log(renderToString(
-                            <Provider store={store}>
-                                <RouterContext {...renderProps}/>
-                            </Provider>
-                        ));
                         this.body = layout(renderToString(
                             <Provider store={store}>
                                 <RouterContext {...renderProps}/>

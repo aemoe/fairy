@@ -48,31 +48,32 @@ const config = {
         rules: [
             {
                 test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader",
-                        options: {
-                            modules: true,
-                            localIdentName: "[name]_[local]_[hash:base64:3]",
-                            importLoaders: 1,
-                            sourceMap: true
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: {
+                                modules: true,
+                                localIdentName: "[name]_[local]_[hash:base64:3]",
+                                importLoaders: 1,
+                                sourceMap: true
+                            }
+                        }, {
+                            loader: "postcss-loader",
+                            options: {
+                                sourceMap: true,
+                                plugins: () => [
+                                    precss(),
+                                    autoprefixer({
+                                        browsers: ['last 3 version', 'ie >= 10']
+                                    }),
+                                    postcsseasysprites({imagePath: '../img', spritePath: './assets/dist/img'})
+                                ]
+                            }
                         }
-                    }, {
-                        loader: "postcss-loader",
-                        options: {
-                            sourceMap: true,
-                            plugins: () => [
-                                precss(),
-                                autoprefixer({
-                                    browsers: ['last 3 version', 'ie >= 10']
-                                }),
-                                postcsseasysprites({imagePath: '../img', spritePath: './assets/dist/img'})
-                            ]
-                        }
-                    }
-                ]
+                    ]
+                })
             }, {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -95,9 +96,7 @@ const config = {
         ]
     },
     plugins: [
-        // new ExtractTextPlugin({
-        //     filename:"bundle.css"
-        // }),
+        new ExtractTextPlugin('dist/css/style.css'),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
             inject: true,
