@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://github.com/aemoe/fairy">
-    <img width="100" heigth="100" src="doc/img/logo.svg">
+    <img width="100" heigth="100" src="https://github.com/aemoe/fairy/blob/master/doc/img/logo.svg">
   </a>
   <h2>Fairy - 一个前后端分离框架 </h2>
   <p align="left">
@@ -88,34 +88,5 @@ ReactDOM.render(<Timer />, mountNode);
 |:--|:--|:--|
 |使用passport时,一直无法写入cookie,并无法验证通过|原因是由于没有在执行代码的时候,写入await让验证操作执行完在进行后续操作,造成了问题|只需要增加await,等待异步执行完成后传接成功内容给http body,代码如下: <br> await passport.authenticate('local', function(err, user, info, status) {.....} |
 
-<h2 align="center">使用的技术</h2>
-<p align="center">(In chronological order)</p>
-
-* @google for [Google Web Toolkit (GWT)](https://code.google.com/archive/p/google-web-toolkit), which aims to compile Java to JavaScript. It features a similar [Code Splitting](http://www.gwtproject.org/doc/latest/DevGuideCodeSplitting.html) as webpack.
-* @medikoo for [modules-webmake](https://github.com/medikoo/modules-webmake), which is a similar project. webpack was born because I wanted Code Splitting for modules-webmake. Interestingly the [Code Splitting issue is still open](https://github.com/medikoo/modules-webmake/issues/7) (thanks also to @Phoscur for the discussion).
-* @substack for [browserify](http://browserify.org/), which is a similar project and source for many ideas.
-* @jrburke for [require.js](http://requirejs.org/), which is a similar project and source for many ideas.
-* @defunctzombie for the [browser-field spec](https://gist.github.com/defunctzombie/4339901), which makes modules available for node.js, browserify and webpack.
-* Every early webpack user, which contributed to webpack by writing issues or PRs. You influenced the direction...
-* @shama, @jhnns and @sokra for maintaining this project
-* Everyone who has written a loader for webpack. You are the ecosystem...
-* Everyone I forgot to mention here, but also influenced webpack.
-
-
-[npm]: https://img.shields.io/npm/v/webpack.svg
-[npm-url]: https://npmjs.com/package/webpack
-
-[node]: https://img.shields.io/node/v/webpack.svg
-[node-url]: https://nodejs.org
-
-[deps]: https://img.shields.io/david/webpack/webpack.svg
-[deps-url]: https://david-dm.org/webpack/webpack
-
-[tests]: https://img.shields.io/travis/webpack/webpack/master.svg
-[tests-url]: https://travis-ci.org/webpack/webpack
-
-[builds-url]: https://ci.appveyor.com/project/sokra/webpack/branch/master
-[builds]: https://ci.appveyor.com/api/projects/status/github/webpack/webpack?svg=true
-
-[cover]: https://img.shields.io/coveralls/webpack/webpack.svg
-[cover-url]: https://coveralls.io/r/webpack/webpack/
+<h2 align="center">协议</h2>
+MIT
