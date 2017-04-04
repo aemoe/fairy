@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://github.com/aemoe/fairy">
-    <img width="100" heigth="100" src="https://github.com/aemoe/fairy/blob/master/doc/img/logo.svg">
+    <img width="100" heigth="100" src="doc/img/logo.png">
   </a>
   <h2>Fairy - 一个前后端分离框架 </h2>
   <p align="left">
