@@ -81,6 +81,16 @@ ReactDOM.render(<Timer />, mountNode);
 |:--|:--|:--|
 |如何在后端运行时,忽略css文件,防止nodejs后端服务器报错|node服务器不能正确解析css文件,所以会出现报错|使用**asset-require-hook**插件排除css,也可以排除sass文件,防止nodejs读取css报错.|
 |前后端生成的css-modules不同,造成了部署到服务器时,会造成读不到样式,然后页面闪现问题|原因是由于使用的组件**css-modules-require-hook**也是根据css-modules的机制,以file-path路径进行生成的hash,所以由于css-modules-require-hook和webpack的目录不同,所以造成了生成的hash不一样只的问题|只需要在css-modules-require-hook组件中使用rootDir,将两个目录一致即可|
+|后端React 使用renderToString渲染 图片路径变为hash码名称|原因是由于Nodejs加载文件时,会自动转为hash名称|使用插件asset-require-hook钩子来返回正确的图片名称|
+```js
+require('asset-require-hook')({
+  extensions: [
+    'jpg', 'png', 'gif', 'webp'
+  ],
+  name: '[name].[ext]',
+  limit: 2000
+});
+```
 
 #### 后端权限验证类
 
