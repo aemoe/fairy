@@ -125,7 +125,7 @@ Webpack 是当下最热门的前端资源模块化管理和打包工具。它可
 
 Babel是一个转换编译器，它能将ES6转换成可以在浏览器中运行的代码。Babel由来自澳大利亚的开发者Sebastian McKenzie创建。他的目标是使Babel可以处理ES6的所有新语法，并为它内置了React JSX扩展及Flow类型注解支持。
 
-在当下浏览器标准尚未统一,对ES6和ES7支持性未到时候 我们需要babel自动将我们所使用的ES6,7的新特性记性转换,并变成我们浏览器都兼容的ES5语法,并可以让你的代码更规范和整齐.
+在当下浏览器标准尚未统一,对ES6和ES7支持性未到时候 我们需要babel自动将我们所使用的ES6,7的新特性进行转换,并变成我们浏览器都兼容的ES5语法,并可以让你的代码更规范和整齐.
 
 我当时使用这2个工具时候,webpack觉得配置很麻烦,还要一堆loader(加载器),各种配置,觉得非常麻烦,但是适应了以后就觉得非常简单了
 
@@ -495,11 +495,11 @@ new webpack.HotModuleReplacementPlugin(),
 ```json
 {
     "presets": ["react", "es2015", "stage-0", "stage-1", "stage-2", "stage-3"],
-    "plugins": ["transform-class-properties", "transform-es2015-modules-commonjs", "transform-runtime"]
+    "plugins": ["transform-class-properties", "transform-es2015-modules-commonjs", "transform-runtime","react-hot-loader/babel"]
 }
 ```
 
-我们在Babel中使用了很多的转换器和插件, 安装也很简单,我们使用的包有以下这些,具体功能不在阐述了, 大家自己Search吧~ ~
+我们在Babel中使用了很多的转换器和插件, 安装也很简单,我们使用的包有以下这些,具体功能不在阐述了, 大家自己Search吧~
 
 ```json
 "babel-cli": "^6.23.0",
@@ -529,7 +529,7 @@ new webpack.HotModuleReplacementPlugin(),
 ExtractTextPlugin = require('extract-text-webpack-plugin'),
 ```
 
-webpack在打包代码时,可以看到样式直接生成在页面的, 所以我们如果想让这些样式单独为一个文件引用时, 就需要用这个的插件, 当使用这个插件的时候, 就可以让页面一link模式引用css了, 在一些比较大的样式时 还是让css样式存储在浏览器cache里面比较能减轻服务器数据吞吐压力,配置如下:
+webpack在打包代码时,可以看到样式直接生成在页面的, 所以我们如果想让这些样式单独为一个文件引用时, 就需要用这个的插件, 当使用这个插件的时候, 就可以让页面以link模式引用css了, 在一些比较大的样式时 还是让css样式存储在浏览器cache里面比较能减轻服务器数据吞吐压力,配置如下:
 
 ```js
 new ExtractTextPlugin('dist/css/style.css'),
@@ -911,7 +911,7 @@ exports.layout = function(content, data) {
 };
 
 ```
-这里很简单 就是讲生成的内容填充到这个外套中
+这里很简单 就是将生成的内容填充到这个外套中
 
 ## 四.前端路由和后端路由的同步
 
@@ -1133,6 +1133,18 @@ koa的必备中间件, 通过使用该组件, 可以自己在服务器端进行�
 logger = require('koa-logger'),
 ```
 koa的服务器记录插件,可以输出各种请求报错等信息的输出, 主要用来调试和监控服务器状态
+
+```js
+  bodyParser = require('koa-bodyparser')
+```
+
+这个插件需要说一下, 我在使用表单请求时, koa无法拿到对应的表单信息, 所以需要引用这组件用来解析body的中间件，比方说你通过post来传递表单，json数据，或者上传文件，在koa中是不容易获取的，通过koa-bodyparser解析之后，在koa中this.body就能直接获取到数据。
+
+数据库方面操作方面使用了Sequelize, 可以对多种数据库进行操作, 并且使用了类似MongoDB一样的操作方法, 使用起来非常便捷,详细见 server/models
+
+## 八.用户权限验证 passport
+
+
 
 
 
