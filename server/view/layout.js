@@ -1,9 +1,11 @@
 'use strict';
 
+import common from '../../common.json';
+
 exports.layout = function(content, data) {
     return `
   <!DOCTYPE html>
-  <html lang="en">
+  <html>
   <head>
     <meta charSet='utf-8'/>
     <meta httpEquiv='X-UA-Compatible' content='IE=edge'/>
@@ -18,7 +20,9 @@ exports.layout = function(content, data) {
   <script>
   window.__REDUX_DATA__ = ${JSON.stringify(data)};
   </script>
-  <script src="/dist/js/index.js"></script>
+  <script src="${common.publicPath}dist/js/manifest.js"></script>
+  <script src="${common.publicPath}dist/js/vendor.js"></script>
+  <script src="${common.publicPath}dist/js/index.js"></script>
   </body>
   </html>
 `;

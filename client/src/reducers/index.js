@@ -1,8 +1,11 @@
 "use strict";
 import {combineReducers} from 'redux';
-// Reducers
-import homeReducer from './home_reducer.js';
+//load redux-form plugin
+import {reducer as formReducer} from 'redux-form';
+
+import userReducer from './user_reducer';
+
 // Combine Reducers
-var reducers = combineReducers({home: homeReducer});
+var reducers = combineReducers({form: formReducer,user:userReducer});
 
 export default reducers;

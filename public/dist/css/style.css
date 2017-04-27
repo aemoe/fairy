@@ -1,0 +1,451 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+body, button, input, select, textarea {
+    font: 12px/1.5 "Source Sans Pro", -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    font-weight: 200;
+}
+
+input, select, textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    text-align: inherit;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+iframe {
+    display: block;
+}
+
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+a:hover {
+    /*text-decoration: underline;*/
+}
+
+ins, a {
+    text-decoration: none;
+}
+::-webkit-input-placeholder {
+    color: #c5c5c5;
+    transition: opacity 250ms ease-in-out;
+}
+
+:focus::-webkit-input-placeholder {
+    opacity: 0.5;
+}
+
+body {
+    padding-top: 46px;
+}
+
+.style_nav_2Lm {
+    transition: opacity 250ms ease-in-out;
+    height: 45px;
+    line-height: 45px;
+    background: #fff;
+    border-bottom: 1px solid #eeeeee;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.style_nav_2Lm li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.style_nav_2Lm li a {
+    color: #626262;
+}
+
+.style_nav_2Lm li .style_logo_2Hq {
+    background: url(/dist/img/logo.png) no-repeat center;
+    background-size: 100% 100%;
+    width: 26px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.style_nav_2Lm li.style_fl_10U {
+    border-left: 1px solid #eee;
+}
+
+.style_nav_2Lm li.style_fr_Bxu {
+    border-right: 1px solid #eee;
+}
+
+.style_nav_2Lm li.style_login_visable_2GR {
+    display: none;
+}
+
+.style_fl_10U {
+    float: left;
+}
+
+.style_fr_Bxu {
+    float: right;
+}
+
+.style_avatar_1a- {
+    float: right;
+    position: relative;
+}
+
+.style_avatar_1a- img {
+    width: 30px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.style_avatar_1a- dl {
+    position: absolute;
+    width: 100%;
+    left: -1px;
+    text-align: center;
+    line-height: 23px;
+    border: 1px solid #eee;
+    display: none;
+    color: #686868;
+    background: #fff;
+}
+
+.style_avatar_1a- dl dt {
+    cursor: pointer
+}
+
+.style_avatar_1a- dl dt:hover {
+    background: #f3f3f3;
+}
+
+.style_avatar_1a-:hover dl {
+    display: block;
+}
+/* login page style */
+
+.login_banner_eub {
+    /*background: url(../img/banner.jpg) no-repeat center;*/
+    background: #000;
+    background-size: cover;
+    height: 300px;
+    margin-top: -45px;
+}
+
+.login_banner_eub p {
+    text-align: center;
+}
+
+.login_banner_eub .login_text_logo_3fN {
+    text-align: center;
+    padding-top: 105px;
+}
+
+.login_banner_eub .login_text_logo_cn_iYZ {
+    padding-top: 20px;
+}
+
+.login_form_HMj {
+    width: 280px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.login_form_HMj li {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #575757;
+    position: relative;
+}
+
+.login_form_HMj li .login_segmentation_eZc {
+    background: #eeeeee;
+    border-radius: 5px;
+    display: inline-block;
+    width: 74px;
+    height: 6px;
+}
+
+.login_form_HMj li input {
+    border: none;
+    text-align: center;
+    outline: none;
+    width: 100%;
+}
+
+.login_form_HMj li span.login_error_Hah {
+    color: #f00;
+    position: absolute;
+    right: -115px;
+    font-size: 12px;
+    line-height: 15px;
+    bottom: 8px;
+    width: 110px;
+    text-align: left;
+}
+
+.login_form_HMj li .login_form_submit_2A1 {
+    border: 1px solid #c9c9c9;
+    width: 100%;
+    background: #ffffff;
+    height: 45px;
+    line-height: 45px;
+    color: #727272;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+.login_form_HMj li .login_remmber_input_28B
+        {
+    width: auto;
+}
+
+.login_form_HMj li .login_remmber_pw__H2 {
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.login_form_HMj li.login_form_border_3hw {
+    padding-top: 40px;
+    border-bottom: 1px solid #eee;
+}
+
+.login_form_HMj li.login_form_pw_2rP {
+    padding-bottom: 40px;
+}
+
+.login_form_HMj li.login_form_top_1AZ {
+    padding-top: 40px;
+}
+
+.login_form_reg_32l {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #eeeeee;
+    background: #fff;
+    line-height: 60px;
+    text-align: center;
+}
+
+.login_form_reg_32l a {
+    margin: 0 5px;
+    color: #727272;
+    text-decoration: underline;
+}
+
+.login_tips_1nU {
+    background: #fff;
+    height: 40px;
+    position: fixed;
+    top: 46px;
+    width: 400px;
+    margin-left: -200px;
+    left: 50%;
+    border-radius: 3px;
+    display: none;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #000000;
+    font-weight: 200;
+    z-index: 10;
+    box-shadow: 1px 1px 3px #ccc;
+}
+
+
+.login_tips_show_2fL {
+    display: block;
+}
+body {
+  background: #ffffff;
+}
+
+.home_banner_54M {
+  height: 300px;
+  border-bottom: 1px solid #eee;
+  color: #626262;
+}
+
+.home_banner_54M p {
+  text-align: center;
+}
+
+.home_banner_text_3hb {
+  padding: 30px 0;
+}
+
+.home_logo_en_Vri {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.home_upload_btn_2jB {
+  border: 1px solid #c9c9c9;
+  width: 110px;
+  background: #ffffff;
+  height: 35px;
+  line-height: 35px;
+  color: #727272;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  font-size: 12px;
+  margin-top: 5px
+}
+
+.home_upload_btn_2jB:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.home_content_23r {
+  color: #626262;
+  text-align: center;
+}
+
+.home_content_23r h1 {
+  font-size: 36px;
+  padding: 40px 0;
+  font-weight: 200;
+}
+
+.home_content_23r h2 {
+  font-size: 13px;
+  font-weight: 200;
+  padding-bottom: 50px;
+}
+
+.home_list__k2 {
+  width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.home_list__k2 li {
+  width: 270px;
+  float: left;
+  margin: 0 30px 30px 0;
+}
+
+.home_list__k2 li img {
+  width: 100%;
+  height: 140px;
+  float: left;
+}
+
+.home_list__k2 li p {
+  line-height: 3em;
+  font-weight: 400;
+}
+
+.home_readmore_3FT {
+  padding: 20px 0;
+}
+
+.home_readmore_3FT a {
+  color: #252525;
+  cursor: pointer;
+}
+
+.home_footer_1Jx {
+  height: 65px;
+  line-height: 65px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 13px;
+  color: #626262;
+}
+._404_wrapper_3S3 {
+    text-align: center;
+    padding-top: 38px;
+    line-height: 2em;
+    font-size: 12px;
+}
+._404_wrapper_3S3 img {
+    margin-bottom: 30px;
+}
+
+/*# sourceMappingURL=style.css.map*/

@@ -3,26 +3,29 @@ import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import {Link} from 'react-router';
 
+import Nav from '../view/nav.js';
+
+
 import '../dist/css/reset.css';
-import '../dist/css/style.css';
+import Style from '../dist/css/style.css';
+import Style_404 from '../dist/css/404.css';
+
+import title_404 from '../dist/img/404.png';
 
 export default class App extends Component {
-    render() {
-        return (
-            <div>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/404">404</Link>
-                    </li>
-                    <li>
-                        <Link to="/user">User</Link>
-                    </li>
-                </ul>
-                <p>404 page</p>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Nav/>
+        <div className={Style_404.wrapper}>
+          <p><img src={title_404}/></p>
+          <p>NOT FOUND PAGE!</p>
+          <p>找不到页面</p>
+        </div>
+      </div>
+    );
+  }
 };

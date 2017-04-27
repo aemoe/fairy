@@ -1,6 +1,10 @@
 {
+    "publicPath": "/",
     "text": {
         "webSiteName": "Web Site",
         "indexTitle": "Web Site - Index Page"
+    },
+    "token": {
+        "key": "Listen-Lite"
     }
 }

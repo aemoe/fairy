@@ -6,27 +6,34 @@ import {layout} from '../view/layout.js';
 import {Provider} from 'react-redux';
 import routes from '../../client/src/route/router.js';
 import configureStore from '../../client/src/store/store.js';
+import App from '../../client/src/view/home.js';
+
 
 //get page and switch json and html
-export function * index(next) {
-    switch (this.accepts("json", "html")) {
+export async function index(ctx,next) {
+    console.log(ctx.state.user,ctx.isAuthenticated());
+    switch (ctx.accepts("json", "html")) {
         case "html":
             {
                 match({
                     routes,
-                    location: this.url
+                    location: ctx.url
                 }, (error, redirectLocation, renderProps) => {
                     if (error) {
                         console.log(500)
                     } else if (redirectLocation) {
                         console.log(302)
                     } else if (renderProps) {
-                        const store = configureStore();
-                        this.body = layout(renderToString(
+                        //iinit store
+                        let loginStore = {user:{logined:ctx.isAuthenticated()}};
+                        const store = configureStore(loginStore);
+                        console.log(store.getState());
+                        ctx.body = layout(renderToString(
                             <Provider store={store}>
                                 <RouterContext {...renderProps}/>
                             </Provider>
                         ), store.getState());
+
                     } else {
                         console.log(404);
                     }
@@ -40,13 +47,13 @@ export function * index(next) {
                     'message': '这个是主页',
                     'data': {}
                 };
-                this.body = callBackData;
+                ctx.body = callBackData;
             }
             break;
         default:
             {
                 // allow json and html only
-                this.throw(406, "allow json and html only");
+                ctx.throw(406, "allow json and html only");
                 return;
             }
     }

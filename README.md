@@ -5,7 +5,7 @@
   </a>
   <h2>Fairy - 一个前后端分离框架 </h2>
   <p align="left">
-  一个能够支持前后端分离并支持中间层同构的完整框架,或许现在它还不够完善,但是我会把构建该框架中遇到的问题都列出来,以方便其他人遇到问题不在需要去到处搜索问题,希望为自己搭建框架的人有一些帮助,也希望最后成为一个完整而又完美的框架,如果这些问题你也遇到了,请点个star,感谢~ ~
+  一个能够支持前后端分离并支持中间层同构的完整框架,或许现在它还不够完善,但是我会把构建该框架中遇到的问题都列出来,以方便其他人遇到问题不在需要去到处搜索问题,希望为自己搭建框架的人有一些帮助,文档也会不断更新和优化,你可以watch项目随时看到文档的更新,也希望最后成为一个完整而又完美的框架,如果这些问题对你有帮助,请点个star吧,感谢~ ~
   <p>
 </div>
 
@@ -13,7 +13,7 @@
 
 ###  为什么叫这个名字?
 
-因为这是一份送给一只名叫Fairy M(美人)的猫的礼物 ~
+因为这是一份送给一只名叫Fairy Mo(美人)的猫的礼物 ~
 
 <h2 align="center">计划执行</h2>
 
@@ -22,10 +22,11 @@
 - [x] 数据同步 使用Redux及React-redux实现
 - [x] css-modules同步 保证前后端生成的css-modules相同
 - [x] webpack热加载组件优化
-- [ ] react-router按需加载
 
 
 <h2 align="center">怎么安装</h2>
+
+开启本地数据库Mysql,并使用phpmyadmin类似的工具在mysql中创建数据库(名字随意之后要填写),之后将mysql中的文件夹sql文件导入数据库, 最后在server/config/db.json中配置mysql的数据库名称和用户名密码即可
 
 ```bash
 npm i
@@ -125,11 +126,7 @@ Babel是一个转换编译器，它能将ES6转换成可以在浏览器中运行
 
 **如何配置webpack2的配置和怎么让环境支持热加载**
 
-这部分由于是客户端环境的工具配置, 不会讲解的特别细, 大家可以去官方中文网进行阅读和学习,但是会将一些遇到的坑,和如何配置
-
-我们来看下webpack2的配置都是干什么的,当前环境的配置如下
-
-配置如该链接 [Webpack配置文件](https://github.com/aemoe/fairy/blob/master/client/config/ "Webpack配置文件")
+这部分由于是客户端环境的工具配置, 不会讲解的特别细, 大家可以去官方中文网进行阅读和学习,但是会将一些遇到的坑,和如何配置,我们来看下webpack2的配置都是干什么的,当前环境的配置 [Webpack配置文件](https://github.com/aemoe/fairy/blob/master/client/config/ "Webpack配置文件")
 
 为什么要2个配置文件?devServer.js是什么?
 
@@ -157,7 +154,7 @@ Babel是一个转换编译器，它能将ES6转换成可以在浏览器中运行
 webpack = require('webpack'),
 ```
 
-这个不说了 不明白拖出去打死
+这个不说了
 
 ```js
 HtmlWebpackPlugin = require('html-webpack-plugin'),
@@ -194,6 +191,7 @@ new HtmlWebpackPlugin({
 ```js
 entry: {
         index:  './src/index.js'
+		}
 ```
 
 如果不使用该组件, 打包完成生成的就只有一个index,js文件,所以我们还是为了将一些公用的包提取出来, 就需要记性分支打包,这样做为什么? 还是为了利用浏览器缓存, 也可以在项目新部署时, 完成只对更新的包进行替换, 而公用那部分不进行替换, 这样用户就不需要再下载公用的js, 从减小服务器或者CDN压力, 对吧 省钱~ 服务器不要钱啊, CDN不收费啊?
@@ -203,7 +201,6 @@ entry: {
 **入口配置**
 ```js
 entry: {
-        // index: ['react-hot-loader/patch', 'webpack-hot-middleware/client', './src/index.js']
         index:
           './src/index.js',
         vendor: [

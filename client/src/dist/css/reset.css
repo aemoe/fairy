@@ -19,7 +19,8 @@ audio, canvas, video {
 }
 
 body, button, input, select, textarea {
-    font: 12px/1.5 "微软雅黑";
+    font: 12px/1.5 "Source Sans Pro", -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    font-weight: 200;
 }
 
 input, select, textarea {
@@ -93,7 +94,7 @@ sub {
 }
 
 a:hover {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 
 ins, a {

@@ -1,3 +1,4 @@
 # 忽略文件
 node_modules/
 npm-debug.log
+1.js
