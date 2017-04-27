@@ -1,22 +1,21 @@
+
 <div align="center">
   <a href="https://github.com/aemoe/fairy">
-  <img width="100" heigth="100" src="doc/img/logo.png">
-</a>
+    <img width="100" heigth="100" src="doc/img/logo.png">
+  </a>
   <h2>Fairy - 一个前后端分离框架 </h2>
   <p align="left">
   一个能够支持前后端分离并支持中间层同构的完整框架,或许现在它还不够完善,但是我会把构建该框架中遇到的问题都列出来,以方便其他人遇到问题不在需要去到处搜索问题,希望为自己搭建框架的人有一些帮助,文档也会不断更新和优化,你可以watch项目随时看到文档的更新,也希望最后成为一个完整而又完美的框架,如果这些问题对你有帮助,请点个star吧,感谢~ ~
-  </p>
   <p>
-</p>
 </div>
 
-# 框架名字
+<h2 align="center">框架名字</h2>
 
-## 为什么叫这个名字?
+###  为什么叫这个名字?
 
 因为这是一份送给一只名叫Fairy Mo(美人)的猫的礼物 ~
 
-# 计划执行
+<h2 align="center">计划执行</h2>
 
 - [x] 路由同步 React-router及Koa-router同步
 - [x] 模板同步 View层同步,使用react-dom/server实现
@@ -24,7 +23,8 @@
 - [x] css-modules同步 保证前后端生成的css-modules相同
 - [x] webpack热加载组件优化
 
-# 怎么安装
+
+<h2 align="center">怎么安装</h2>
 
 开启本地数据库Mysql,并使用phpmyadmin类似的工具在mysql中创建数据库(名字随意之后要填写),之后将mysql中的文件夹sql文件导入数据库, 最后在server/config/db.json中配置mysql的数据库名称和用户名密码即可
 
@@ -33,11 +33,12 @@ npm i
 npm start
 ```
 
-# 框架优势
 
-- 路由同步(前后端共用一套路由)
-- 模板同步(前后端共用一套模板)
-- 数据同步(前后端公用一套数据状态机)
+<h2 align="center">框架优势</h2>
+
+* 路由同步(前后端共用一套路由)
+* 模板同步(前后端共用一套模板)
+* 数据同步(前后端公用一套数据状态机)
 
 同构对比之前非同构加载对比, 可以明显看到白屏时间更少, 页面总计加载速度更快
 
@@ -45,9 +46,9 @@ npm start
 
 ![IMG](doc/img/vs.png)
 
-# 也想从头到尾构建一个这样的框架? Well, 我把构建过程尽量详细的写下来
+<h2 align="center">也想从头到尾构建一个这样的框架? Well, 我把构建过程尽量详细的写下来</h2>
 
-## 架构
+### 架构
 
 对于一个框架, 最重要是架构, 我们如果需要构建一个前后端中间层同构的插件, 就需要在一个文件夹中. 考虑架构时,我为了让前后端所使用的环境相对独立, 前端部分可以单独提取出来进行制作, 也希望后端部分也能更清晰的展现和管理. 我们决定将框架内容分成两大部分, **Cliet** 和 **Server** 两个文件夹分别保存.对于前端文件夹目录结构相对比较固定了, 不需要考虑太多东西, 按照官方的推荐目录即可, 将View, Router和Store区分出来即可. 而服务器端部分, 我们考虑后还是使用最经典的MVC架构, 这样可以将控制层, 数据层和展示层区分出来, 即利于后台业务的解耦, 也利于我们之后的维护修改和添加新业务.
 
@@ -55,28 +56,28 @@ npm start
 
 ```
 ├── client 前端开发文件夹
-│   ├── assets 前端自测试打包资源生成地址
-│   │   └── dist 打包生成的资源文件, 包含js,img,css
-│   │       └── js
-│   │       └── css
-│   │       └── img
-│   ├── config webpack配置文件目录
-│   └── src 开发目录
-│       ├── actions redux的action文件存放目录
-│       ├── data 测试数据存放文件
-│       ├── dist 资源文件存放目录
-│       │   ├── css
-│       │   └── img
-│       │   └── js
-│       ├── reducers redux的reducers文件存放目录
-│       ├── route 前端路由存放地址
-│       ├── store 前端redux状态控制存放目录
-│       └── view 前端视图存放目录
+│   ├── assets 前端自测试打包资源生成地址
+│   │   └── dist 打包生成的资源文件, 包含js,img,css
+│   │       └── js
+│   │       └── css
+│   │       └── img
+│   ├── config webpack配置文件目录
+│   └── src 开发目录
+│       ├── actions redux的action文件存放目录
+│       ├── data 测试数据存放文件
+│       ├── dist 资源文件存放目录
+│       │   ├── css
+│       │   └── img
+│       │   └── js
+│       ├── reducers redux的reducers文件存放目录
+│       ├── route 前端路由存放地址
+│       ├── store 前端redux状态控制存放目录
+│       └── view 前端视图存放目录
 ├── public 服务器所使用的前端打包文件夹
-│   └── dist
-│       ├── css
-│       ├── img
-│       └── js
+│   └── dist
+│       ├── css
+│       ├── img
+│       └── js
 └── server 后端开发目录夹
     ├── auth 权限验证目录 用来存放用户验证部分
     ├── config 后端例如数据库等配置文件的存放目录
@@ -86,19 +87,19 @@ npm start
     └── view 后端页面生成外套层存放目录,由于界面同步, 后端只负责生成页面时的外套嵌套
 ```
 
-## 前言
+### 前言
 
 **为什么要用中间同构?中间同构是什么?**
 
 在出现同构之前，我们会让后端输出API的json数据, 而前端接收到这些数据以后, 进行封装和拼装,这样会出现一个问题,就是如果业务变更了,那么接口变更,这时候前端和后端人员都需要重新修改字节的代码和业务逻辑,之前的主要问题如下：
 
-- **1\. 前后端需要进行各自的开发, 并以json接口对接**
+* **1. 前后端需要进行各自的开发, 并以json接口对接**
 
 ```
 后端用自己的业务实现业务逻辑和json数据的拼接,前端接收到json数据,完成数据到界面的转换,成本很大
 ```
 
-- **2\. SEO问题**
+* **2. SEO问题**
 
 ```
 异步加载的SEO优化问题，没有服务端渲染，蜘蛛抓取不到数据，无SEO可言
@@ -106,7 +107,7 @@ npm start
 
 其实理由很简单,就是为了减少开发成本,并增加整体项目的可维护性, 而且通过使用该技术可以有效减少网页加载速度,并提供优良的SEO优化能力,还能够利用Nodejs的高并发能力的特性,让Nodejs处理它最擅长的方面,从而增加整体架构的负载能力,节约硬件成本,提升项目的的负载能力
 
-## 一. Nodejs的环境安装和配置
+### 一. Nodejs的环境安装和配置
 
 构建一个这样的框架 肯定用的是NodeJS环境, 毕竟无论是后端服务器, 代码打包优化等工作,都是由Nodejs负责制作的
 
@@ -116,7 +117,7 @@ Window: 直接下载官方安装包安装即可,请下载最新版本,这样可�
 
 Mac: 不建议用安装包安装 一个是升级不方便,切换版本也不方便,而且卸载非常麻烦,mac使用brew安装或者nvm来安装,攻略大家自己搜索吧
 
-## 二.webpack及babel环境工具的搭建
+### 二.webpack及babel环境工具的搭建
 
 当完成了Nodejs环境, 我们会遇到一个大坑, 就是需要一些自动化工具的使用, 主要是webpack和babel,webpack我们使用2.0版本,也是最近发布的
 
@@ -142,8 +143,8 @@ Babel是一个转换编译器，它能将ES6转换成可以在浏览器中运行
 
 我们看下代码片段:
 
-```javascript
-    //加载webpack模块
+```js
+	//加载webpack模块
     webpack = require('webpack'),
     //加载自动化HTML自动化编译插件
     HtmlWebpackPlugin = require('html-webpack-plugin'),
@@ -156,48 +157,48 @@ Babel是一个转换编译器，它能将ES6转换成可以在浏览器中运行
 
 头部这些主要是一些需要使用到的插件组件, 注释也写得很清楚了, 引用了这些插件, 我们才能实现对应的功能 我一个一个解释下吧
 
-```javascript
+```js
 webpack = require('webpack'),
 ```
 
 这个不说了
 
-```javascript
+```js
 HtmlWebpackPlugin = require('html-webpack-plugin'),
 ```
-
 当引用这个组件时,我们就可以完成**自动将模板转化为HTML页面并将页面所使用的css经过webpack打包后的链接自动加载在页面源码中**,是不是很方便,我们看下配置
 
-```javascript
+```js
 new HtmlWebpackPlugin({
             template: 'src/index.html',
-            //页面模板的地址, 支持一些特殊的模板, 比如jade, ejs, handlebar等
+			//页面模板的地址, 支持一些特殊的模板, 比如jade, ejs, handlebar等
             inject: true,
-            //文件插入的位置, 可以选择在 body 还是 head 中
+			//文件插入的位置, 可以选择在 body 还是 head 中
             hash: true,
-            //是否给页面的资源文件后面增加hash,防止读取缓存
+			//是否给页面的资源文件后面增加hash,防止读取缓存
             minify: {
                 removeComments: true,
                 collapseWhitespace: false
             },
-            //精简优化功能 去掉换行之类的
+			//精简优化功能 去掉换行之类的
             chunks: ['index','vendor','manifest'],
-            //文件中插入的 entry 名称，注意必须在 entry 中有对应的申明，或者是使用 CommonsChunkPlugin 提取出来的 chunk. 简单理解即页面需要读取的js文件模块
+			//文件中插入的 entry 名称，注意必须在 entry 中有对应的申明，或者是使用 CommonsChunkPlugin 提取出来的 chunk. 简单理解即页面需要读取的js文件模块
             filename: 'index.html'
-            //最终生成的 html 文件名称，其中可以带上路径名
+			//最终生成的 html 文件名称，其中可以带上路径名
 }),
 ```
 
-```javascript
+
+```js
  CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
 ```
 
 当webpack打包时,如果不进行分包工作, 他会打包成一个js文件,名字就是入口你给的名字,比如:
 
-```javascript
+```js
 entry: {
         index:  './src/index.js'
-        }
+		}
 ```
 
 如果不使用该组件, 打包完成生成的就只有一个index,js文件,所以我们还是为了将一些公用的包提取出来, 就需要记性分支打包,这样做为什么? 还是为了利用浏览器缓存, 也可以在项目新部署时, 完成只对更新的包进行替换, 而公用那部分不进行替换, 这样用户就不需要再下载公用的js, 从减小服务器或者CDN压力, 对吧 省钱~ 服务器不要钱啊, CDN不收费啊?
@@ -205,8 +206,7 @@ entry: {
 怎么用咧? 我们不说直接上代码
 
 **入口配置**
-
-```javascript
+```js
 entry: {
         index:
           './src/index.js',
@@ -220,12 +220,10 @@ entry: {
         ]
     }
 ```
-
 我们可以看到vendor模块将所有用的一些公用模块写在了这里, 为了就是让这些公共模块方便之后的插件配置,让它们单独打包, index模块则是我们单页面应用时所用的脚本,都是我们自己写得脚本啦~
 
 **模块配置js**
-
-```javascript
+```js
 new webpack.optimize.CommonsChunkPlugin({
             names: [
                 'vendor', 'manifest'//需要分包的对应的名字
@@ -236,20 +234,20 @@ new webpack.optimize.CommonsChunkPlugin({
 
 这里为什么多了个manifest? 这个是个啥东西, 说简单点, 就是webpack2 用来存储一些关系啦, 链接啦之类的东西, 如果不提取这个模块, 每次打包之后vendor 都会有变化, 就失去了我们替换资源时不替换vendor包的意义了, 对吧~ ~ 所以每次项目更新下,只需要替换index.js和mainifest.js就可以了, 很黑科技吧~ 哈哈 go on go on
 
-```javascript
+```js
     autoprefixer = require('autoprefixer'),
-    //自动加浏览器兼容方案, 主要是css3的兼容方案
+	//自动加浏览器兼容方案, 主要是css3的兼容方案
     precss = require('precss'),
-    //可以让postCSS支持一些SASS的语法特性
+	//可以让postCSS支持一些SASS的语法特性
     postcsseasysprites = require('postcss-easysprites'),
-    //支持前端CSS精灵的功能 即背景图自动拼接和合成为一张图片, 减少请求
+	//支持前端CSS精灵的功能 即背景图自动拼接和合成为一张图片, 减少请求
 ```
 
-这几个插件其实都是postCss的插件, PostCSS和LESS, SASS都是CSS预加载器, 主要是为了让我们更加快捷和简单的编写CSS 并让CSS支持一些编程的特性, 例如循环, 变量等功能 这里我们构建选择了postCSS, 原因很简单, 1.非常快 2\. 插件可以支持Sass和Less的功能
+这几个插件其实都是postCss的插件, PostCSS和LESS, SASS都是CSS预加载器, 主要是为了让我们更加快捷和简单的编写CSS 并让CSS支持一些编程的特性, 例如循环, 变量等功能 这里我们构建选择了postCSS, 原因很简单, 1.非常快 2. 插件可以支持Sass和Less的功能
 
 我们看看webpack是如何处理文件的, webpack采用的是**loader(加载器)**来处理, 用各种loader进行文件的细化处理和特性的执行,看下代码:
 
-```javascript
+```js
 module: {
         //加载器配置
         rules: [
@@ -339,7 +337,7 @@ module: {
 
 **CSS的处理**, 具体格式不说了, 直说都是干什么的, 为什么这么做
 
-```javascript
+```js
 {
                 test: /\.css$/,
                 use: [
@@ -404,7 +402,7 @@ module: {
 
 我们再看看**输出的配置**
 
-```javascript
+```js
 output: {
         path: assetsDir,//path代表js文件输出的路径
         filename: jsDir + '[name].js', //用来配置输出文件名格式
@@ -414,7 +412,7 @@ output: {
 
 最后我们看下**开发工具**, 通过使用该工具,可以自动加载source-map,方便我们的调试开发, 毕竟压缩过的代码是无法进行调试的, 而source-map可以还原之前代码并指向位置, 这样方便我们操作
 
-```javascript
+```js
   devtool: 'source-map',
 ```
 
@@ -422,7 +420,7 @@ output: {
 
 建立一个devServer.js, 用来执行服务器的运行和具体配置, 并附加上react-hot-loader3插件, code如下:
 
-```javascript
+```js
 //加载Node的Path模块
 const path = require('path');
 //加载webpack模块
@@ -457,12 +455,11 @@ var creatServer = () => {
 //调用创建koa服务器方法
 creatServer();
 ```
-
 配置文档含有注释, 不在详细介绍, 只说下**webpack-dev-server**的功能, 这个服务器等于一个微型的express或者koa框架, 使用它可以使用nodejs完成一个简单的本地服务器, 并支持热替换功能, 主要是检测webpack打包过程和让程序支持热加载, 但是应用了这个插件并不会完成所有热加载效果, 比如我们在使用redux时, 就会出问题, 因为这个热替换并不能保留state(状态), 所以使用时, 每次保存, react组件的状态就不会保留, 所以需要引入另一个插件**react-hot-loader**来解决这个问题, 我们看下如何使用这个插件, 插件的使用方法很多, 我选择了一个最简单的方法来实现,见code
 
 第一步: 在入口文件哪里加上最上面3句话
 
-```javascript
+```js
 entry: {
     index: [
       'react-hot-loader/patch',
@@ -475,7 +472,7 @@ entry: {
 
 第二部: 增加webpack中的热更新插件
 
-```javascript
+```js
 new webpack.HotModuleReplacementPlugin(),
 ```
 
@@ -526,30 +523,28 @@ new webpack.HotModuleReplacementPlugin(),
 
 最后我们看下**打包生成的webpack配置文件**
 
-```javascript
+```js
 ExtractTextPlugin = require('extract-text-webpack-plugin'),
 ```
 
 webpack在打包代码时,可以看到样式直接生成在页面的, 所以我们如果想让这些样式单独为一个文件引用时, 就需要用这个的插件, 当使用这个插件的时候, 就可以让页面以link模式引用css了, 在一些比较大的样式时 还是让css样式存储在浏览器cache里面比较能减轻服务器数据吞吐压力,配置如下:
 
-```javascript
+```js
 new ExtractTextPlugin('dist/css/style.css'),
 ```
 
 这里我们将所有样式压缩为一个style.css文件,当然,也可以实现分开打包
 
-```javascript
+```js
 new ExtractTextPlugin(cssDir + '[name].css'),
 ```
 
-```javascript
+```js
     //加载JS模块压缩编译插件
     UglifyJsPlugin = webpack.optimize.UglifyJsPlugin,
 ```
-
 加载压缩模块, 可以将js压缩为最精简的代码, 大幅度减小生成的文件大小, 配置如下:
-
-```javascript
+```js
 new UglifyJsPlugin({
     // 最紧凑的输出
     beautify: false,
@@ -571,7 +566,7 @@ new UglifyJsPlugin({
 
 OK, 我们完成了webpack和Babel的配置, 就可以开始开发了, 这部分主要还是资料的稀缺,现在有了中文官方站好一些, 之前很多配置并不是很找, 看了后希望大家能够明白这些配置是干什么的而不只是按照别人的配置完成即可.
 
-## 三.react的引用
+### 三.react的引用
 
 react作为实现的核心框架,主要的黑科技也是靠它给出的一些方法来实现的,我们先看下react的生命周期
 
@@ -585,23 +580,24 @@ ReactJS的生命周期可以分为三个阶段来看：**实例化、存在期�
 
 首次实例化
 
-- getDefaultProps
-- getInitialState
-- componentWillMount
-- render
-- componentDidMount
+* getDefaultProps
+* getInitialState
+* componentWillMount
+* render
+* componentDidMount
 
-实例化之后更新，这一过程和上面一样，但没有getDefaultProps这个过程 简单记忆：props => state => mount => render => mounted
+实例化之后更新，这一过程和上面一样，但没有getDefaultProps这个过程
+简单记忆：props => state => mount => render => mounted
 
 **存在期**
 
 组件已经存在，状态发生改变时
 
-- componetWillReceiveProps
-- shouldComponentUpdate
-- ComponentWillUpdate
-- render
-- componentDidUpdate
+* componetWillReceiveProps
+* shouldComponentUpdate
+* ComponentWillUpdate
+* render
+* componentDidUpdate
 
 简单记忆：receiveProps => shouldUpdate => update => render => updated
 
@@ -611,35 +607,44 @@ componentWillUnmount
 
 生命周期中10个API的作用说明
 
-- getDefaultProps 作用于组件类，只调用一次，返回对象用于设置默认的props，对于引用值，会在实例中共享
+* getDefaultProps
+作用于组件类，只调用一次，返回对象用于设置默认的props，对于引用值，会在实例中共享
 
-- getInitialState 作用于组件实例，在实例创建时调用一次，用于初始化每个实例的state，此时可以访问this.props
+* getInitialState
+作用于组件实例，在实例创建时调用一次，用于初始化每个实例的state，此时可以访问this.props
 
-- componentWillMount 在完成首次渲染之前调用，此时可以修改组件的state
+* componentWillMount
+在完成首次渲染之前调用，此时可以修改组件的state
 
-- render 必选方法，创建虚拟DOM，该方法具有特殊规则：
+* render
+必选方法，创建虚拟DOM，该方法具有特殊规则：
+```
+只能通过this.props 和this.state访问数据
+可以返回null、false或任何React组件
+只能出现一个顶级组件，数组不可以
+不能改变组件的状态
+不能修改DOM
+```
 
-  ```
-  只能通过this.props 和this.state访问数据
-  可以返回null、false或任何React组件
-  只能出现一个顶级组件，数组不可以
-  不能改变组件的状态
-  不能修改DOM
-  ```
+* componentDidMount
+真实的DOM被渲染出来后调用，可以在此方法中通过 this.getDOMNode()访问真实的DOM元素。此时可以使用其它类库操作DOM。服务端不会被调用
 
-- componentDidMount 真实的DOM被渲染出来后调用，可以在此方法中通过 this.getDOMNode()访问真实的DOM元素。此时可以使用其它类库操作DOM。服务端不会被调用
+* componetWillReceiveProps
+组件在接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件的props及state
 
-- componetWillReceiveProps 组件在接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件的props及state
+* shouldComponentUpdate
+组件是否应当渲染新的props或state，返回false表示跳过后续的生命周期方法，通常不需要使用以避免出现bug。在出现应用性能瓶颈时，是一个可以优化的点。
 
-- shouldComponentUpdate 组件是否应当渲染新的props或state，返回false表示跳过后续的生命周期方法，通常不需要使用以避免出现bug。在出现应用性能瓶颈时，是一个可以优化的点。
+* componetWillUpdate
+接收新props或state后，进行渲染之前调用，此时不允许更新props或state
 
-- componetWillUpdate 接收新props或state后，进行渲染之前调用，此时不允许更新props或state
+* componetDidUpdate
+完成渲染新的props或state之后调用 ，此时可以访问DOM元素。
 
-- componetDidUpdate 完成渲染新的props或state之后调用 ，此时可以访问DOM元素。
+* componetWillUnmount
+组件被移除之前调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。
 
-- componetWillUnmount 组件被移除之前调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。
-
-```javascript
+```js
 var React = require("react");
 var ReactDOM = require("react-dom");
 
@@ -706,9 +711,9 @@ ReactDOM.render(<NewView name="ReactJS"></NewView>, document.body);
 
 官方呢 给我们提供了2个方法用来让服务器进行渲染页面
 
-- **React.renderToString** 是把 React 元素转成一个 HTML 字符串，因为服务端渲染已经标识了 reactid，所以在浏览器端再次渲染，React 只是做事件绑定，而不会将所有的 DOM 树重新渲染，这样能带来高性能的页面首次加载！同构黑魔法主要从这个 API 而来。
+* **React.renderToString** 是把 React 元素转成一个 HTML 字符串，因为服务端渲染已经标识了 reactid，所以在浏览器端再次渲染，React 只是做事件绑定，而不会将所有的 DOM 树重新渲染，这样能带来高性能的页面首次加载！同构黑魔法主要从这个 API 而来。
 
-- **React.renderToStaticMarkup** 这个 API 相当于一个简化版的 renderToString，如果你的应用基本上是静态文本，建议用这个方法，少了一大批的 reactid，DOM 树自然精简了，在 IO 流传输上节省一部分流量。
+* **React.renderToStaticMarkup** 这个 API 相当于一个简化版的 renderToString，如果你的应用基本上是静态文本，建议用这个方法，少了一大批的 reactid，DOM 树自然精简了，在 IO 流传输上节省一部分流量。
 
 当我们使用renderToString这个方法时候 后台渲染时会生成一段带标识的HTML字符串,当前端页面读取到JS时会判断如果HMTl字符串带标识,那么就不在渲染页面了,而是只绑定事件,节约了react脚本渲染的工作.
 
@@ -720,7 +725,7 @@ ReactDOM.render(<NewView name="ReactJS"></NewView>, document.body);
 
 我们的界面层非常简单, 我们在client/view文件夹中创建一个文件, 用来写react的组件, 代码如下:
 
-```javascript
+```js
 "use strict";
 import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
@@ -739,7 +744,7 @@ import Style from '../dist/css/style.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    //初始化方法, 继承父级props方法
+	//初始化方法, 继承父级props方法
   }
   render() {
   //将HTML代码结构保存在内存中 然后渲染一段HTML代码
@@ -765,10 +770,9 @@ class App extends Component {
 };
 export default App;
 ```
-
 上面方法很简单,哪如何后端使用对应方法使用服务器渲染呢?一样非常简单,我们看代码:
 
-```javascript
+```js
 "use strict";
 
 import React from 'react';
@@ -847,7 +851,7 @@ export async function index(ctx, next) {
 
 这时候我们就可以在这里使用后台渲染功能了,我们可以看到, 在增加了渲染这部分内容, 我们可以直接将react的部分直接渲染为HTML代码串, 这里不详细阐述,之后会对这里综合其他同构部分详细解释, 这里只需要理解实现方法即可
 
-```javascript
+```js
 renderToString(
               <Provider store={store}>
                 <RouterContext {...renderProps}/>
@@ -856,7 +860,6 @@ renderToString(
 ```
 
 生成的字符串如下
-
 ```html
 <div data-reactroot="" data-reactid="1" data-react-checksum="978259924"><ul class="style_nav_2Lm" data-reactid="2"><li class="style_fl_10U" data-reactid="3"><a href
 ="/" data-reactid="4">首 页</a></li><li class="style_fl_10U" data-reactid="5"><a href="/404" data-reactid="6">串 流</a></li><li data-reactid="7"><a href="/" data-reactid="8"><i
@@ -876,7 +879,7 @@ ata-reactid="47">立即注册 ListenLite</a></div></div>
 
 这里我们可以看到, 我们这里直接渲染了页面组件, 但是并没有客户端中的index.js的外套层, 我们需在后端写一个document的外套用来包裹这些生成的代码,所以我们可以再server/view 中看到一个layout.js文件
 
-```javascript
+```js
 'use strict';
 
 import common from '../../common.json';
@@ -906,11 +909,11 @@ exports.layout = function(content, data) {
   </html>
 `;
 };
-```
 
+```
 这里很简单 就是将生成的内容填充到这个外套中
 
-## 四.前端路由和后端路由的同步
+### 四.前端路由和后端路由的同步
 
 当我们明白了React的生命周期和了解了服务器如何使用官方的2个方法实现服务器渲染功能, 我们看下如何架构前后端公用的路由
 
@@ -921,7 +924,6 @@ React Router 是完整的 React 路由解决方案
 React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。你第一个念头想到的应该是 URL，而不是事后再想起。
 
 简单的说, 就是以前我们的路由控制, 例如页面的跳转等都是由后台控制的, 浏览器发送请求给后台服务器, 然后后台反馈内容, 现在由react-router接管了, 跳转放在了前端来执行, 为什么能实现, 正式因为HTML的新特性 History API
-
 ```
 HTML5 新增的历史记录 API 可以实现无刷新更改地址栏链接，配合 AJAX 可以做到无刷新跳转。
 
@@ -933,15 +935,14 @@ window.history.pushState(null, null, "/profile/");
 
 那我们使用react-router在中间同构中做什么? 当然是为了实现前后端的路由同步而做的
 
-- 在用户第一次访问页面时，由服务端路由处理，输出相关页面内容
-- 客户端用户点击链接跳转，由客户端路由处理，渲染相关组件并展示
-- 用户在前端跳转后刷新页面，此时被服务端路由截获，并由服务端处理渲染并返回* 页面内容
+* 在用户第一次访问页面时，由服务端路由处理，输出相关页面内容
+* 客户端用户点击链接跳转，由客户端路由处理，渲染相关组件并展示
+* 用户在前端跳转后刷新页面，此时被服务端路由截获，并由服务端处理渲染并返回* 页面内容
 
 我们看下code:
 
 前端路由的设置如下:
-
-```javascript
+```js
 const Routers = (
     <Router history={browserHistory}>
         <Route path="/" component={Home}/>
@@ -951,15 +952,13 @@ const Routers = (
       <Route path="/logout" component={Logout}/>
         <Route path="*" component={Page404}/>
     </Router>
-    export default Routers;
+	export default Routers;
 );
 ```
-
 可以看到我们使用的切换方法是browserHistory, 既HTML5的新特性, 但是对浏览器有要求, IE6-8并不支持, 还有一个是hashHistory, 他们的区别是hash的方式会在链接中增加 site.com/#/index的形式展现, 这是为了让浏览器的历史可以记住每次切换的页面, 也是用了锚点的特性
 
 再看下服务器端的配置代码段:
-
-```javascript
+```js
 const router = new Router();
 
 //Index page route
@@ -982,10 +981,9 @@ router.post('/vaildate_email', require('../containers/reg.js').vaildate_email);
 //set a router
 module.exports = router.routes()
 ```
+ 我们的服务器使用的是koa2, 所以附带的路由也是对应的koa-router, 由于后台架构是MVC结构,我们看下路由读取的控制器层的代码段
 
-我们的服务器使用的是koa2, 所以附带的路由也是对应的koa-router, 由于后台架构是MVC结构,我们看下路由读取的控制器层的代码段
-
-```javascript
+```js
 import routes from '../../client/src/route/router.js';
 
 export async function index(ctx,next) {
@@ -1043,7 +1041,7 @@ export async function index(ctx,next) {
 
 这里可以看到路由的设计, 在后端使用了koa2, 所以可以对请求的类型进行判断,这样充分利用了链接的优势, 可以请求同一个地址, 由于请求类型的不同, 判断是html还是json,反馈不同的数据结构, 这样就做到了路由的富应用
 
-## 五.前端状态控制及后端状态控制的同步
+### 五.前端状态控制及后端状态控制的同步
 
 **什么是redux**
 
@@ -1057,7 +1055,7 @@ Redux 提供了一套类似 Flux 的单向数据流，整个应用只维护一�
 
 服务端绑定入口页面代码:
 
-```javascript
+```js
 let store = configureStore(window.__REDUX_DATA__);
 const renderIndex = () => {
     render((
@@ -1075,9 +1073,8 @@ store.subscribe(renderIndex);
 
 服务器端为了实现状态的同步, 并可以在用户刷新页面时, 保证页面中读取的状态是上一次最新的状态, 在这里需要使用客户端的创建方法记性store的创建
 
-server/containers/login.js
-
-```javascript
+server/containers/login.js 
+```js
 //引用客户端创建初始store方法
 import configureStore from '../../client/src/store/store.js';
 
@@ -1087,25 +1084,23 @@ import configureStore from '../../client/src/store/store.js';
               }
             };
             const store = configureStore(loginStore);
-            //通过客户端方法将初始state传递到前端页面
+			//通过客户端方法将初始state传递到前端页面
             ctx.body = layout(renderToString(
               <Provider store={store}>
                 <RouterContext {...renderProps}/>
               </Provider>
             ), store.getState());
 ```
-
 最后我们通过将该状态传递个一个window对象存储, 从而直出到前端页面, 并读取状态生成对应的界面效果, 见代码:
 
 server/view/layout.js
-
 ```html
 <script>
   window.__REDUX_DATA__ = ${JSON.stringify(data)};
  </script>
 ```
 
-## 六.服务器的选择 - koa2
+### 六.服务器的选择 - koa2
 
 至此, 我们基本明白了三大同构的用处, 明白了为什么要这样做和怎么做, 我们看下服务器端的架构和使用的一些组件
 
@@ -1113,7 +1108,7 @@ server/view/layout.js
 
 首先是启动一个服务器, 我们在根目录创建一个app.js文件,然后写上对应的code就会创建一个koa的服务器
 
-```javascript
+```js
 const Koa = require('koa');
 const app = new Koa();
 
@@ -1127,21 +1122,19 @@ app.listen(3000);
 
 其他koa的相关文档, 请查阅官方的中文文档, 这里列一下使用的各种中间件
 
-## 七.一些koa中间件的介绍和用途
+### 七.一些koa中间件的介绍和用途
 
-```javascript
+```js
   router = require('koa-router')(),
 ```
-
 koa的必备中间件, 通过使用该组件, 可以自己在服务器端进行后端路由的设置, 通过设置路由, 完成不同请求(GET,POST,DELETE,PUT等)的服务器状态, 返回请求body中的内容的设置等
 
-```javascript
+```js
 logger = require('koa-logger'),
 ```
-
 koa的服务器记录插件,可以输出各种请求报错等信息的输出, 主要用来调试和监控服务器状态
 
-```javascript
+```js
   bodyParser = require('koa-bodyparser')
 ```
 
@@ -1149,15 +1142,20 @@ koa的服务器记录插件,可以输出各种请求报错等信息的输出, �
 
 数据库方面操作方面使用了Sequelize, 可以对多种数据库进行操作, 并且使用了类似MongoDB一样的操作方法, 使用起来非常便捷,详细见 server/models
 
-## 八.用户权限验证 passport
+### 八.用户权限验证 passport
 
 在身份验证方面, 我们选择了Nodejs 最常用的权限验证组件, 这个组件还支持OAuth , OAuth2 及OpenID等标准的登录.
 
-# 开发日记
 
- 当开发中遇到的问题,我会列在下面,以方便自己查询和其他人进行相同问题的修改和修复
 
-# React使用中遇到的相关问题
+
+
+<h2 align="center">开发日记</h2>
+当开发中遇到的问题,我会列在下面,以方便自己查询和其他人进行相同问题的修改和修复
+
+
+<h2 align="center">React使用中遇到的相关问题</h2>
+
 
 **问题**
 
@@ -1173,7 +1171,7 @@ koa的服务器记录插件,可以输出各种请求报错等信息的输出, �
 
 **解决方案**
 
-```javascript
+```js
 class Timer extends React.Component {
   constructor(props) {
     super(props);
@@ -1220,7 +1218,7 @@ Uncaught RangeError: Maximum call stack size exceeded
 
 **解决方案**
 
-```javascript
+```js
 将
 render((
     <Provider store={store}>
@@ -1237,14 +1235,13 @@ render((
 ), document.getElementById('root'));
 ```
 
-# NodeJS后端及服务器端遇到的问题
+<h2 align="center">NodeJS后端及服务器端遇到的问题</h2>
 
 **问题**
 
 ```
 如何在后端运行时,忽略css文件,防止nodejs后端服务器报错|node服务器不能正确解析css文件,所以会出现报错|使用**asset-require-hook**插件排除css,也可以排除sass文件,防止nodejs读取css报错.
 ```
-
 **原因**
 
 ```
@@ -1256,8 +1253,7 @@ render((
 ```
 后端React 使用renderToString渲染 图片路径变为hash码名称|原因是由于Nodejs加载文件时,会自动转为hash名称|使用插件asset-require-hook钩子来返回正确的图片名称
 ```
-
-```javascript
+```js
 require('asset-require-hook')({
   extensions: [
     'jpg', 'png', 'gif', 'webp'
@@ -1266,8 +1262,7 @@ require('asset-require-hook')({
   limit: 2000
 });
 ```
-
-# 后端权限验证类
+<h2 align="center">后端权限验证类</h2>
 
 **问题**
 
@@ -1280,19 +1275,15 @@ require('asset-require-hook')({
 ```
 原因是由于没有在执行代码的时候,写入await让验证操作执行完在进行后续操作,造成了问题
 ```
-
 **解决方案**
 
 ```
 只需要增加await,等待异步执行完成后传接成功内容给http body,代码如下:
 ```
-
-```javascript
+```js
  await passport.authenticate('local', function(err, user, info, status) {.....}
 ```
 
 
-
-# 协议
-
- MIT
+<h2 align="center">协议</h2>
+MIT
