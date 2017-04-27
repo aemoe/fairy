@@ -572,6 +572,8 @@ react作为实现的核心框架,主要的黑科技也是靠它给出的一些�
 
 **ReactJS的生命周期**
 
+![IMG](doc/img/react-lifecycle.png)
+
 ReactJS的生命周期可以分为三个阶段来看：**实例化、存在期、销毁期**
 
 **实例化**
@@ -705,7 +707,7 @@ var NewView = React.createClass({
 ReactDOM.render(<NewView name="ReactJS"></NewView>, document.body);
 ```
 
-讲一下所谓的React同构的黑科技吧,其实so easy的
+讲一下所谓的React同构的黑科技吧
 
 官方呢 给我们提供了2个方法用来让服务器进行渲染页面
 
