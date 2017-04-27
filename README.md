@@ -42,13 +42,9 @@ npm start
 
 同构对比之前非同构加载对比, 可以明显看到白屏时间更少, 页面总计加载速度更快
 
-非同构:
+非同构 VS 同构
 
-![IMG](doc/img/before.png)
-
-同构:
-
-![IMG](doc/img/after.png)
+![IMG](doc/img/vs.png)
 
 <h2 align="center">也想从头到尾构建一个这样的框架? Well, 我把构建过程尽量详细的写下来</h2>
 
