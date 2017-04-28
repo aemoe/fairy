@@ -21,7 +21,7 @@ class App extends Component {
                 <div className={Home.banner}>
                     <p className={Home.logo_en}><img width="233" src={logo_en_black}/></p>
                   <p className={Home.banner_text}>立即开始创作音频</p>
-                    {/* 一起创造有选择的音频 */}
+
                     <p>
                         <Link to="/reg">
                             <button className={Home.upload_btn}>立 即 创 作</button>
