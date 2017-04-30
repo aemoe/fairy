@@ -1,9 +1,9 @@
 "use strict";
 import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
-import { connect } from 'react-redux';
-import {browserHistory} from 'react-router';
+import {connect} from 'react-redux';
 import axios from 'axios';
+import * as actions from '../redux/actions/index';
 
 import Nav from '../view/nav.js';
 
@@ -15,12 +15,12 @@ class App extends Component {
     let _this = this;
     axios.get('/logout').then(function(response) {
       if (response.data.success) {
-        _this.props.dispatch({type: 'LOGOUT'});
-        browserHistory.push('/');
+        _this.props.logout();
+        _this.props.history.push('/');
       }
     }).catch(function(error) {
-      _this.props.dispatch({type: 'LOGOUT'});
-      browserHistory.push('/');
+      _this.props.logout();
+      _this.props.history.push('/');
       console.log(error);
     });
   }
@@ -36,4 +36,4 @@ class App extends Component {
   }
 };
 
-export default connect()(App);
+export default connect(null, actions)(App);

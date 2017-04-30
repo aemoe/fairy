@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import passport from 'koa-passport';
-import configureStore from '../../client/src/store/store.js';
+import configureStore from '../../client/src/redux/store/configureStore';
 import db from '../config/db.js';
 import common from '../../common.json';
 import App from '../../client/src/view/login.js';

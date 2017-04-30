@@ -12,15 +12,13 @@ require('asset-require-hook')({
   name: '/dist/img/[name].[ext]',
   limit: 2000
 });
+//load common config
+const common = require('./common.json');
 
 let path = require('path');
 
 //Css modules hook
-require('css-modules-require-hook')({
-  generateScopedName: '[name]_[local]_[hash:base64:3]',
-  camelCase: true,
-  rootDir:'./client/'
-});
+require('css-modules-require-hook')({generateScopedName: '[name]_[local]_[hash:base64:3]', camelCase: true, rootDir: './client/'});
 
 let
   //加载koa主模块
@@ -36,9 +34,6 @@ let
   passport = require('koa-passport'),
   session = require('koa-session'),
   routers = require('./server/route/router.js');
-
-
-
 
 //初始化koa对象
 const App = () => {
@@ -82,14 +77,14 @@ const App = () => {
   return app;
 };
 
-//Creat koa server and listen at 8000
+//Creat koa server and listen
 var creatServer = () => {
   const app = App();
-  app.listen(3000, function(err) {
+  app.listen(common.serverPort, function(err) {
     if (err) {
       console.log(err);
     }
-    console.log('Listening at localhost:3000');
+    console.log('Listening at localhost:' + common.serverPort);
   });
 };
 

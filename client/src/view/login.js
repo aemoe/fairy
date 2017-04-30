@@ -29,7 +29,7 @@ class App extends Component {
             <img width="58" src={logo_cn}/>
           </p>
         </div>
-        <LoginForm/>
+        <LoginForm history={this.props.history}/>
         <div className={Login.form_reg}>
           还没有账号?
           <a href="#">立即注册 ListenLite</a>

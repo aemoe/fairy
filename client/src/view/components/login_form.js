@@ -2,29 +2,26 @@
 import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
-import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import axios from 'axios';
-// import Mock from 'mockjs';
+import * as actions from '../../redux/actions/index';
 
 import Login from '../../dist/css/login.css';
 
-// Mock.mock('/login', {
-//   'success': true,
-//   'status': 200,
-//   'message': '登录失败!',
-//   'data': {}
-// });
+if (process.env.NODE_ENV !== 'production') {
+  require('../../data/mock');
+}
 
 const submit = async function submit(values) {
   let _this = this;
+  console.log(_this);
   await axios.post('/login', values).then(function(response) {
     console.log(response);
     if (!response.data.success) {
       throw new SubmissionError({_error: response.data.message});
     } else {
-      _this.props.dispatch({type: 'LOGIN'});
-      browserHistory.push('/');
+      _this.props.login();
+      _this.props.history.push('/');
     }
   })
 }
@@ -68,4 +65,4 @@ class LoginForm extends Component {
   }
 };
 
-export default connect()(reduxForm({form: 'login_form'})(LoginForm));
+export default connect(null, actions)(reduxForm({form: 'login_form'})(LoginForm));

@@ -6,7 +6,7 @@
   "scripts": {
     "koa": "node ./app.js",
     "dev": "pm2 start ./app.js  --watch",
-    "start": "cd client && npm run build && cd ../ && pm2 start ./app.js  --watch"
+    "start": "cd client && npm run build && cd ../  && cross-env NODE_ENV=production pm2 start ./app.js  --watch"
   },
   "author": "aemoe",
   "license": "MIT",
@@ -32,6 +32,7 @@
     "babel-register": "^6.23.0",
     "babel-runtime": "^6.23.0",
     "bcrypt": "^1.0.2",
+    "cross-env": "^4.0.0",
     "css-modules-require-hook": "^4.0.5",
     "jsonwebtoken": "^7.3.0",
     "koa": "^2.0.0-alpha.8",

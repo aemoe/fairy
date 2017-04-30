@@ -6,7 +6,7 @@ import passport from 'koa-passport';
 import {layout} from '../view/layout.js';
 import routes from '../../client/src/route/router.js';
 import db from '../config/db.js';
-import configureStore from '../../client/src/store/store.js';
+import configureStore from '../../client/src/redux/store/configureStore';
 
 const User = db.User;
 

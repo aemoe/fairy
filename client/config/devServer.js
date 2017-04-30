@@ -6,6 +6,8 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 //加载webpack配置文件
 const config = require('./webpack.config.dev');
+//载入默认配置
+const common = require('../../common.json');
 
 //配置及初始化Koa服务器
 var creatServer = () => {
@@ -20,12 +22,12 @@ var creatServer = () => {
             colors: true // 用颜色标识
         }
     });
-    //调用开启5000端口用来测试和开发
-    app.listen(5000, function(err) {
+    //调用开启端口用来测试和开发
+    app.listen(common.clientPort , function(err) {
         if (err) {
             console.log(err);
         }
-        console.log('Listening at localhost:5000');
+        console.log('Listening at localhost:'+common.clientPort);
     });
 };
 

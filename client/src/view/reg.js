@@ -28,7 +28,7 @@ class App extends Component {
             <img width="58" src={logo_cn}/>
           </p>
         </div>
-        <RegForm/>
+        <RegForm history={this.props.history}/>
         <div className={Login.form_reg}>
           点击 注册 按钮表示同意
           <a href="#">
