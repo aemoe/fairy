@@ -1239,6 +1239,26 @@ render((
 ), document.getElementById('root'));
 ```
 
+
+**问题**
+
+```
+引入react-hot-loader3之后报错
+Warning: ExceptionsManager.js:76 <Provider> does not support changing `store` on the fly. It is most likely that you see this error because you updated to Redux 2.x and React Redux 2.x which no longer hot reload reducers automatically. See https://github.com/reactjs/react-redux/releases/tag/v2.0.0 for the migration instructions.
+
+Warning: [react-router] You cannot change <Router routes>; it will be ignored
+
+```
+**原因**
+
+```
+第一个问题未知,请参考client/redux的文件夹里面的设置可以解决
+
+react-router3 在使用react-hot-loader3时会出现报错的问题, 不需要管它, 这并不影响使用 如果想解决可以给router加随机数
+<Router history={history} routes={routes} key={Math.random()}/>
+或者更换react-router4 即可
+```
+
 <h2 align="center">NodeJS后端及服务器端遇到的问题</h2>
 
 **问题**
