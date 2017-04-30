@@ -44,7 +44,7 @@ npm start
 
 非同构 VS 同构
 
-![IMG](doc/img/vs.png)
+<img width="390" src="doc/img/vs.png">
 
 <h2 align="center">也想从头到尾构建一个这样的框架? Well, 我把构建过程尽量详细的写下来</h2>
 
