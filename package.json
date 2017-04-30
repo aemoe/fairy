@@ -4,8 +4,8 @@
   "description": "Gitf to a cat that her name is Fairy Mo.",
   "main": "index.js",
   "scripts": {
-    "koa": "node ./app.js",
-    "dev": "pm2 start ./app.js  --watch",
+    "koa": "cross-env NODE_ENV=production node ./app.js",
+    "dev": "cross-env NODE_ENV=production pm2 start ./app.js  --watch",
     "start": "cd client && npm run build && cd ../  && cross-env NODE_ENV=production pm2 start ./app.js  --watch"
   },
   "author": "aemoe",

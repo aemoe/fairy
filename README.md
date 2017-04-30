@@ -46,6 +46,10 @@ npm start
 
 <img width="390" src="doc/img/vs.png">
 
+前端开发中也支持react,react-router,样式及Redux的动态更新
+
+<img width="450" src="doc/img/preview.gif">
+
 <h2 align="center">也想从头到尾构建一个这样的框架? Well, 我把构建过程尽量详细的写下来</h2>
 
 ### 架构
@@ -63,15 +67,17 @@ npm start
 │   │       └── img
 │   ├── config webpack配置文件目录
 │   └── src 开发目录
-│       ├── actions redux的action文件存放目录
 │       ├── data 测试数据存放文件
+│       ├── redux
+│       │   ├── actions redux的action文件存放目录
+│       │   ├── constants 将所有action放在一起便于管理
+│       │   ├── reducers redux的reducers文件存放目录
+│       │   └── store 前端redux状态控制存放目录
 │       ├── dist 资源文件存放目录
 │       │   ├── css
 │       │   └── img
 │       │   └── js
-│       ├── reducers redux的reducers文件存放目录
 │       ├── route 前端路由存放地址
-│       ├── store 前端redux状态控制存放目录
 │       └── view 前端视图存放目录
 ├── public 服务器所使用的前端打包文件夹
 │   └── dist
@@ -1144,15 +1150,7 @@ koa的服务器记录插件,可以输出各种请求报错等信息的输出, �
 
 ### 八.用户权限验证 passport
 
-在身份验证方面, 我们选择了Nodejs 最常用的权限验证组件, 这个组件还支持OAuth , OAuth2 及OpenID等标准的登录.
-
-
-<h2 align="center">开发实际项目中用到的插件</h2>
-
-Nodejs端图片验证:https://github.com/trekjs/captcha
-
-
-
+在身份验证方面, 我们选择了Nodejs 最常用的权限验证组件, 这个组件还支持OAuth , OAuth2 及OpenID等标准的登录
 
 <h2 align="center">开发BUG日记</h2>
 当开发中遇到的问题,我会列在下面,以方便自己查询和其他人进行相同问题的修改和修复
