@@ -1,14 +1,13 @@
 "use strict";
 import React from 'react';
 import {renderToString, renderToStaticMarkup} from 'react-dom/server';
-import {match, RouterContext} from 'react-router';
+import {StaticRouter, matchPath} from 'react-router-dom';
 import {layout} from '../view/layout.js';
 import {Provider} from 'react-redux';
 import bcrypt from 'bcrypt';
-
-import routes from '../../client/src/route/router.js';
 import configureStore from '../../client/src/store/store.js';
 import db from '../config/db.js';
+import App from '../../client/src/view/reg.js';
 const User = db.User;
 
 //get page and switch json and html
@@ -16,27 +15,21 @@ export async function index(ctx, next) {
   switch (ctx.accepts("json", "html")) {
     case "html":
       {
-        match({
-          routes,
-          location: ctx.url
-        }, (error, redirectLocation, renderProps) => {
-          if (error) {
-            console.log(500)
-          } else if (redirectLocation) {
-            console.log(302)
-          } else if (renderProps) {
-            //iinit store
-            let loginStore = {user:{logined:ctx.isAuthenticated()}};
-            const store = configureStore(loginStore);
-            ctx.body = layout(renderToString(
-              <Provider store={store}>
-                <RouterContext {...renderProps}/>
-              </Provider>
-            ), store.getState());
-          } else {
-            console.log(404);
+        //init store
+        let loginStore = {
+          user: {
+            logined: ctx.isAuthenticated()
           }
-        })
+        };
+        const store = configureStore(loginStore);
+        const html = layout(renderToString(
+          <Provider store={store}>
+            <StaticRouter location={ctx.url} context={{}}>
+              <App/>
+            </StaticRouter>
+          </Provider>
+        ), store.getState());
+        ctx.body = html;
       }
       break;
     case "json":

@@ -1147,10 +1147,14 @@ koa的服务器记录插件,可以输出各种请求报错等信息的输出, �
 在身份验证方面, 我们选择了Nodejs 最常用的权限验证组件, 这个组件还支持OAuth , OAuth2 及OpenID等标准的登录.
 
 
+<h2 align="center">开发实际项目中用到的插件</h2>
+
+Nodejs端图片验证:https://github.com/trekjs/captcha
 
 
 
-<h2 align="center">开发日记</h2>
+
+<h2 align="center">开发BUG日记</h2>
 当开发中遇到的问题,我会列在下面,以方便自己查询和其他人进行相同问题的修改和修复
 
 

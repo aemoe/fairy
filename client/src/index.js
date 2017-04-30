@@ -3,21 +3,24 @@ import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import {Router, match, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
-import routes from './route/router.js';
-import configureStore from './store/store.js';
+import routes from './route/router';
+import store from './redux/store'
+import { AppContainer } from 'react-hot-loader';
+import Root from './view/root';
 
-let store = configureStore(window.__REDUX_DATA__);
-const renderIndex = () => {
-    render((
-      <div>
-        <Provider store={store}>
-            {routes}
-        </Provider>
-      </div>
-    ), document.getElementById('root'))
+const renderIndex = Component => {
+  render(
+    <AppContainer>
+      <Provider store={store}>
+        <Component />
+      </Provider>
+    </AppContainer>,
+    document.getElementById('root')
+  )
 };
-renderIndex();
-store.subscribe(renderIndex);
-store.subscribe(() =>
-    console.log(store.getState())
-);
+
+renderIndex(Root);
+
+if (module.hot) {
+  module.hot.accept(() => renderIndex(Root))
+}

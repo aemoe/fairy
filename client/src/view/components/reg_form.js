@@ -5,34 +5,90 @@ import {Field, reduxForm,SubmissionError} from 'redux-form';
 import {browserHistory} from 'react-router';
 import { connect } from 'react-redux';
 import axios from 'axios';
-// import Mock from 'mockjs';
+import Mock from 'mockjs';
 
 import Login from '../../dist/css/login.css';
 
 
-// Mock.mock('/vaildate_user', {
-//   'success': true,
-//   'status': 200,
-//   'message': '用户名有重复!',
-//   'data': {}
-// });
-//
-// Mock.mock('/vaildate_email', {
-//   'success': true,
-//   'status': 200,
-//   'message': '邮箱已被占用!',
-//   'data': {}
-// });
-//
-//
-// Mock.mock('/reg_user', {
-//   'success': false,
-//   'status': 200,
-//   'message': '注册失败!',
-//   'data': {}
-// });
-//
+Mock.mock('/vaildate_user', {
+  'success': true,
+  'status': 200,
+  'message': '用户名有重复!',
+  'data': {}
+});
 
+Mock.mock('/vaildate_email', {
+  'success': false,
+  'status': 200,
+  'message': '邮箱已被占用!',
+  'data': {}
+});
+
+
+Mock.mock('/reg_user', {
+  'success': false,
+  'status': 200,
+  'message': '注册失败!',
+  'data': {}
+});
+
+
+
+
+let validataUsername = false;
+let validataEmail = false;
+
+const asyncValidate = async (values, dispatch, props, field) => {
+      if (field == 'username') {
+      await axios.post('/vaildate_user', values).then(function(response) {
+        if (!response.data.success) {
+          validataUsername = true;
+          console.log(validataUsername , validataEmail);
+          if(validataUsername && validataEmail)
+          {
+            throw {username: '用户名已被占用',email: '邮箱已被占用'};
+          }
+          else
+          {
+            throw {username: '用户名已被占用'};
+          }
+        }
+        else
+        {
+          if(validataEmail)
+          {
+            throw {email: '邮箱已被占用'};
+          }
+          validataUsername = false;
+        }
+      })
+    }
+
+    if (field == 'email') {
+      await axios.post('/vaildate_email', values).then(function(response) {
+        if (!response.data.success) {
+          validataEmail = true;
+          console.log(validataUsername , validataEmail);
+          if(validataUsername && validataEmail)
+          {
+            throw {username: '用户名已被占用',email: '邮箱已被占用'};
+          }
+          else
+          {
+            throw {email: '邮箱已被占用'};
+          }
+        }
+        else
+        {
+          if(validataUsername)
+          {
+            throw {username: '用户名已被占用'};
+          }
+          validataEmail = false;
+        }
+      })
+    }
+};
 
 
 const submit =async function submit(values) {
@@ -96,50 +152,6 @@ const renderField = ({
 
 
 
-let validataUsername = false;
-let validataEmail = false;
-
-const asyncValidate = async (values, dispatch, props, field) => {
-    if (field == 'username') {
-      await axios.post('/vaildate_user', values).then(function(response) {
-        if (!response.data.success) {
-          validataUsername = true;
-          if(validataUsername && validataEmail)
-          {
-            throw {username: '用户名已被占用',email: '邮箱已被占用'};
-          }
-          else
-          {
-            throw {username: '用户名已被占用'};
-          }
-        }
-        else
-        {
-          validataUsername = false;
-        }
-      })
-    }
-
-    if (field == 'email') {
-      await axios.post('/vaildate_email', values).then(function(response) {
-        if (!response.data.success) {
-          validataEmail = true;
-          if(validataUsername && validataEmail)
-          {
-            throw {username: '用户名已被占用',email: '邮箱已被占用'};
-          }
-          else
-          {
-            throw {username: '用户名已被占用'};
-          }
-        }
-        else
-        {
-          validataEmail = false;
-        }
-      })
-    }
-};
 const RegForm = props => {
   const {handleSubmit, pristine, submitting,error} = props;
   console.log(error);
@@ -170,7 +182,7 @@ const RegForm = props => {
         <li className={Login.form_top}>
           <p>请输入下列验证码</p>
         </li>
-        <li>
+        <li className={Login.form_border}>
           <Field component={renderField} name="captcha" placeholder="验证码" type="text"/>
         </li>
         <li className={Login.form_top}>

@@ -2,16 +2,16 @@
 
 import React from 'react';
 import {renderToString, renderToStaticMarkup} from 'react-dom/server';
-import {match, RouterContext} from 'react-router';
+import {StaticRouter, matchPath} from 'react-router-dom';
 import {layout} from '../view/layout.js';
 import {Provider} from 'react-redux';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import passport from 'koa-passport';
-import routes from '../../client/src/route/router.js';
 import configureStore from '../../client/src/store/store.js';
 import db from '../config/db.js';
 import common from '../../common.json';
+import App from '../../client/src/view/login.js';
 const User = db.User;
 
 //get page and switch json and html
@@ -23,31 +23,21 @@ export async function index(ctx, next) {
   switch (ctx.accepts("json", "html")) {
     case "html":
       {
-        match({
-          routes,
-          location: ctx.url
-        }, (error, redirectLocation, renderProps) => {
-          if (error) {
-            console.log(500)
-          } else if (redirectLocation) {
-            console.log(302)
-          } else if (renderProps) {
-            //iinit store
-            let loginStore = {
-              user: {
-                logined: ctx.isAuthenticated()
-              }
-            };
-            const store = configureStore(loginStore);
-            ctx.body = layout(renderToString(
-              <Provider store={store}>
-                <RouterContext {...renderProps}/>
-              </Provider>
-            ), store.getState());
-          } else {
-            console.log(404);
+        //init store
+        let loginStore = {
+          user: {
+            logined: ctx.isAuthenticated()
           }
-        })
+        };
+        const store = configureStore(loginStore);
+        const html = layout(renderToString(
+          <Provider store={store}>
+            <StaticRouter location={ctx.url} context={{}}>
+              <App/>
+            </StaticRouter>
+          </Provider>
+        ), store.getState());
+        ctx.body = html;
       }
       break;
     case "json":
@@ -100,40 +90,41 @@ export async function login(ctx, next) {
         if (user) {
           let isMatch = bcrypt.compareSync(data.password, user.password);
           if (isMatch) {
-            let token = jwt.sign({
-              name: user.username
-            }, common.token.key, {expiresIn: 10080});
+            // let token = jwt.sign({
+            //   name: user.username
+            // }, common.token.key, {expiresIn: 10080});
 
-            await user.updateAttributes({token: token}).then(async(user) => {
-              await passport.authenticate('local', function(err, user, info, status) {
-                if (user === false) {
-                  let callBackData = {
-                    'success': false,
-                    'status': 200,
-                    'message': '权限验证失败!',
-                    'data': {}
-                  };
-                  ctx.body = callBackData;
-                } else {
-                  let callBackData = {
-                    'success': true,
-                    'status': 200,
-                    'message': '登录成功!',
-                    'data': {}
-                  };
-                  ctx.body = callBackData;
-                  return ctx.login(user);
-                }
-              })(ctx, next);
-            }, function(err) {
-              let callBackData = {
-                'success': false,
-                'status': 200,
-                'message': '保存权限失败!',
-                'data': {}
-              };
-              ctx.body = callBackData;
-            });
+            // await user.updateAttributes({token: token}).then(async(user) => {
+            await passport.authenticate('local', function(err, user, info, status) {
+              // if (user === false) {
+              //   let callBackData = {
+              //     'success': false,
+              //     'status': 200,
+              //     'message': '权限验证失败!',
+              //     'data': {}
+              //   };
+              //   ctx.body = callBackData;
+              // } else {
+              console.log(user);
+                let callBackData = {
+                  'success': true,
+                  'status': 200,
+                  'message': '登录成功!',
+                  'data': {}
+                };
+                ctx.body = callBackData;
+                return ctx.login(user);
+              // }
+            })(ctx, next);
+            // }, function(err) {
+            //   let callBackData = {
+            //     'success': false,
+            //     'status': 200,
+            //     'message': '保存权限失败!',
+            //     'data': {}
+            //   };
+            //   ctx.body = callBackData;
+            // });
 
           } else {
             let callBackData = {

@@ -1,29 +1,32 @@
 "use strict";
 import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {match, RouterContext} from 'react-router';
+import {renderToString, renderToStaticMarkup} from 'react-dom/server';
+import {StaticRouter, matchPath} from 'react-router-dom';
 import {layout} from '../view/layout.js';
-import routes from '../../client/src/route/router.js';
+import {Provider} from 'react-redux';
+import configureStore from '../../client/src/store/store.js';
+import App from '../../client/src/view/404.js';
 
 //get page and switch json and html
 export async function index(ctx, next) {
   switch (ctx.accepts("json", "html")) {
     case "html":
       {
-        match({
-          routes,
-          location: ctx.url
-        }, (error, redirectLocation, renderProps) => {
-          if (error) {
-            console.log(500)
-          } else if (redirectLocation) {
-            console.log(302)
-          } else if (renderProps) {
-            ctx.body = layout(renderToString(<RouterContext {...renderProps}/>), {});
-          } else {
-            console.log(404);
+        //init store
+        let loginStore = {
+          user: {
+            logined: ctx.isAuthenticated()
           }
-        })
+        };
+        const store = configureStore(loginStore);
+        const html = layout(renderToString(
+          <Provider store={store}>
+            <StaticRouter location={ctx.url} context={{}}>
+              <App/>
+            </StaticRouter>
+          </Provider>
+        ), store.getState());
+        ctx.body = html;
       }
       break;
     case "json":
