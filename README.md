@@ -28,7 +28,17 @@
 
 开启本地数据库Mysql,并使用phpmyadmin类似的工具在mysql中创建数据库(名字随意之后要填写),之后将mysql中的文件夹sql文件导入数据库, 最后在server/config/db.json中配置mysql的数据库名称和用户名密码即可
 
+在./clent/中执行, 客户端开发,默认端口5000
+
 ```bash
+npm i
+npm start
+```
+
+在根目录,客户端开发及部署,默认开启端口3000
+
+```bash
+npm i pm2 -g
 npm i
 npm start
 ```
@@ -49,6 +59,12 @@ npm start
 前端开发中也支持react,react-router,样式及Redux的动态更新
 
 <img width="450" src="doc/img/preview.gif">
+
+<h2 align="center">开发BUG日记</h2>
+当开发中遇到的问题,我会列在下面,以方便自己查询和其他人进行相同问题的修改和修复
+
+https://github.com/aemoe/fairy/issues
+
 
 <h2 align="center">也想从头到尾构建一个这样的框架? Well, 我把构建过程尽量详细的写下来</h2>
 
@@ -1151,14 +1167,6 @@ koa的服务器记录插件,可以输出各种请求报错等信息的输出, �
 ### 八.用户权限验证 passport
 
 在身份验证方面, 我们选择了Nodejs 最常用的权限验证组件, 这个组件还支持OAuth , OAuth2 及OpenID等标准的登录
-
-<h2 align="center">开发BUG日记</h2>
-当开发中遇到的问题,我会列在下面,以方便自己查询和其他人进行相同问题的修改和修复
-
-https://github.com/aemoe/fairy/issues
-
-
-
 
 <h2 align="center">协议</h2>
 MIT
