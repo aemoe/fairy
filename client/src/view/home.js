@@ -1,18 +1,15 @@
-"use strict";
-import React, {Component} from 'react';
-import ReactDOM, {render} from 'react-dom';
+'use strict';
+import React,{Component} from 'react';
+import {render} from 'react-dom';
 import {Link} from 'react-router-dom';
 
 import Nav from '../view/nav.js';
-import Login from '../view/login';
-import Counter from '../view/Counter.js';
 import logo_en_black from '../dist/img/text_logo_black.png';
 import tempImg1 from '../dist/img/temp.jpg';
 import tempImg2 from '../dist/img/temp1.jpg';
 
 import '../dist/css/reset.css';
 import Home from '../dist/css/home.css';
-import Style from '../dist/css/style.css';
 
 
 class App extends Component {
@@ -70,6 +67,6 @@ class App extends Component {
       </div>
     );
   }
-};
+}
 
 export default App;

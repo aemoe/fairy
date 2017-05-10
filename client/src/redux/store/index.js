@@ -1,5 +1,5 @@
-import configureStore from './configureStore'
+import configureStore from './configureStore';
 
-const store = configureStore(window.__REDUX_DATA__)
+const store = configureStore(window.__REDUX_DATA__);
 
-export default store
+export default store;

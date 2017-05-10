@@ -1,4 +1,3 @@
-const fs = require('fs')
 import Router from 'koa-router';
 
 const router = new Router();
@@ -21,4 +20,4 @@ router.post('/reg_user', require('../containers/reg.js').reg);
 router.post('/vaildate_user', require('../containers/reg.js').vaildate_user);
 router.post('/vaildate_email', require('../containers/reg.js').vaildate_email);
 //set a router
-module.exports = router.routes()
+module.exports = router.routes();

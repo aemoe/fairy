@@ -1,5 +1,3 @@
-//加载Node的Path模块
-const path = require('path');
 //加载webpack模块
 const webpack = require('webpack');
 // const express = require('express');
@@ -11,8 +9,6 @@ const common = require('../../common.json');
 
 //配置及初始化Koa服务器
 var creatServer = () => {
-    //初始化webpack应用
-    let compiler = webpack(config);
     //调用webpack热加载模块及对应参数
     let app = new WebpackDevServer(webpack(config), {
         publicPath: config.output.publicPath,

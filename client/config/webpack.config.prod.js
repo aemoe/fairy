@@ -3,8 +3,6 @@
 **/
 //加载Node的Path模块
 const path = require('path'),
-  //加载Node的fs模块
-  fs = require('fs'),
   //加载webpack模块
   webpack = require('webpack'),
   //加载自动化css独立加载插件
@@ -15,9 +13,7 @@ const path = require('path'),
   precss = require('precss'),
   postcsseasysprites = require('postcss-easysprites'),
   //加载JS模块压缩编译插件
-  UglifyJsPlugin = webpack.optimize.UglifyJsPlugin,
-  //加载公用组件插件
-  CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
+  UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 /**
   设置默认常用路径
@@ -26,8 +22,6 @@ const path = require('path'),
 const srcDir = path.resolve(process.cwd(), 'src'),
   //assetsDir为当前建立目录(默认:/assets)
   assetsDir = path.resolve(process.cwd(), '../public'),
-  //读取入口的js文件目录(本目录只能对应页面的入口的JS,其他脚本需要写在/dist/plugins中)
-  jsEntryDir = path.resolve(srcDir, 'dist/js'),
   //生成JS的目录地址(默认:)
   jsDir = 'dist/js/',
   //生成css的目录地址(默认:)
@@ -62,16 +56,16 @@ const config = {
           fallback: 'style-loader',
           use: [
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 modules: true,
                 camelCase: true,
-                localIdentName: "[name]_[local]_[hash:base64:3]",
+                localIdentName: '[name]_[local]_[hash:base64:3]',
                 importLoaders: 1,
                 sourceMap: true
               }
             }, {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
               options: {
                 sourceMap: true,
                 plugins: () => [
@@ -92,13 +86,13 @@ const config = {
           fallback: 'style-loader',
           use: [
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 importLoaders: 1,
                 sourceMap: true
               }
             }, {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
               options: {
                 sourceMap: true,
                 plugins: () => [
@@ -117,14 +111,14 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader"
+            loader: 'babel-loader'
           }
         ]
       }, {
         test: /\.(png|jpeg|jpg|gif|svg)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
               name: 'dist/img/[name].[ext]'
             }
@@ -136,8 +130,8 @@ const config = {
   plugins: [
     new ExtractTextPlugin('dist/css/style.css'),
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production")
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new HtmlWebpackPlugin({

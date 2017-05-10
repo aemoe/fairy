@@ -25,7 +25,7 @@ passport.use(new Strategy({
 }, function(req, username, password, done) {
   User.findOne({
     attributes: [
-      "id", "username"
+      'id', 'username'
     ],
     where: {
       username: username
@@ -35,7 +35,7 @@ passport.use(new Strategy({
       return done(null, false, {message: 'Email does not exist'});
     }
     return done(null, user.get());
-  }).catch(function(err) {
+  }).catch(function() {
     return done(null, false);
   });
-}))
+}));

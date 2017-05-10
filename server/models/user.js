@@ -1,5 +1,3 @@
-'use strict'
-
 export default function(sequelize, DataTypes) {
     var User = sequelize.define('user', {
         id: {
@@ -37,4 +35,4 @@ export default function(sequelize, DataTypes) {
     });
     User.sync();
     return User;
-};
+}

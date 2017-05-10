@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as CounterActions from '../redux/actions'
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as CounterActions from '../redux/actions';
 
 class Counter extends Component {
   static propTypes = {
@@ -10,7 +10,7 @@ class Counter extends Component {
     counter: PropTypes.object
   }
   handleClick = () => {
-    this.props.actions.increment()
+    this.props.actions.increment();
   }
   render () {
     return (
@@ -19,19 +19,19 @@ class Counter extends Component {
         onClick={this.handleClick}>
         {this.props.counter.count}
       </a>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   counter: state.counter
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(CounterActions, dispatch)
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Counter)
+)(Counter);

@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 //load sequelize
-import Sequelize from "sequelize";
+import Sequelize from 'sequelize';
 // load db.json
-import configs from "./db.json";
+import configs from './db.json';
 
 const dbHost = configs.mysql.host,
     dbPort = configs.mysql.port,
@@ -14,7 +14,7 @@ const dbHost = configs.mysql.host,
 const db = {
     sequelize: new Sequelize(dbName, dbUsername, dbPassword, {
         host: dbHost,
-        dialect: "mysql",
+        dialect: 'mysql',
         port: dbPort,
         pool: {
             max: 5,

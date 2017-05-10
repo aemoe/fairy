@@ -1,27 +1,23 @@
-"use strict";
-
-import React from 'react';
-import {renderToString, renderToStaticMarkup} from 'react-dom/server';
-import {StaticRouter, matchPath} from 'react-router-dom';
+import {renderToString} from 'react-dom/server';
+import {StaticRouter} from 'react-router-dom';
 import {layout} from '../view/layout.js';
 import {Provider} from 'react-redux';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 import passport from 'koa-passport';
 import configureStore from '../../client/src/redux/store/configureStore';
 import db from '../config/db.js';
-import common from '../../common.json';
+// import common from '../../common.json';
 import App from '../../client/src/view/login.js';
 const User = db.User;
 
 //get page and switch json and html
-export async function index(ctx, next) {
-  console.log(ctx.state.user, ctx.isAuthenticated());
+export function index(ctx) {
   if (ctx.isAuthenticated()) {
     ctx.redirect('/');
   }
-  switch (ctx.accepts("json", "html")) {
-    case "html":
+  switch (ctx.accepts('json', 'html')) {
+    case 'html':
       {
         //init store
         let loginStore = {
@@ -40,7 +36,7 @@ export async function index(ctx, next) {
         ctx.body = html;
       }
       break;
-    case "json":
+    case 'json':
       {
         let callBackData = {
           'status': 200,
@@ -53,15 +49,15 @@ export async function index(ctx, next) {
     default:
       {
         // allow json and html only
-        ctx.throw(406, "allow json and html only");
+        ctx.throw(406, 'allow json and html only');
         return;
       }
   }
-};
+}
 
 //user login
-export async function login(ctx, next) {
-  if (ctx.accepts("json", "html") == "json") {
+export async function login(ctx) {
+  if (ctx.accepts('json', 'html') == 'json') {
     let data = ctx.request.body;
     //If reg data is null,reback some tips
     if (!data.username || !data.password) {
@@ -75,7 +71,7 @@ export async function login(ctx, next) {
     } else {
       await User.findOne({
         attributes: [
-          "id", "username", "password"
+          'id', 'username', 'password'
         ],
         where: {
           $or: [
@@ -95,7 +91,7 @@ export async function login(ctx, next) {
             // }, common.token.key, {expiresIn: 10080});
 
             // await user.updateAttributes({token: token}).then(async(user) => {
-            await passport.authenticate('local', function(err, user, info, status) {
+            await passport.authenticate('local', function(err, user) {
               // if (user === false) {
               //   let callBackData = {
               //     'success': false,
@@ -105,17 +101,16 @@ export async function login(ctx, next) {
               //   };
               //   ctx.body = callBackData;
               // } else {
-              console.log(user);
-                let callBackData = {
-                  'success': true,
-                  'status': 200,
-                  'message': '登录成功!',
-                  'data': {}
-                };
-                ctx.body = callBackData;
-                return ctx.login(user);
+              let callBackData = {
+                'success': true,
+                'status': 200,
+                'message': '登录成功!',
+                'data': {}
+              };
+              ctx.body = callBackData;
+              return ctx.login(user);
               // }
-            })(ctx, next);
+            })(ctx);
             // }, function(err) {
             //   let callBackData = {
             //     'success': false,
@@ -145,7 +140,7 @@ export async function login(ctx, next) {
           ctx.body = callBackData;
         }
 
-      }, function(err) {
+      }, function() {
         let callBackData = {
           'success': false,
           'status': 200,
@@ -161,36 +156,36 @@ export async function login(ctx, next) {
 }
 
 //user logout
-export function logout(ctx, next) {
+export function logout(ctx) {
   ctx.logout();
-  switch (ctx.accepts("json", "html")) {
-    case "html":
+  switch (ctx.accepts('json', 'html')) {
+    case 'html':
       {
         let callBackData = {
           'success': true,
           'status': 200,
           'message': '登出成功!',
           'data': {}
-        }
+        };
         ctx.body = callBackData;
         ctx.redirect('/');
       }
       break;
-    case "json":
+    case 'json':
       {
         let callBackData = {
           'success': true,
           'status': 200,
           'message': '登出成功!',
           'data': {}
-        }
+        };
         ctx.body = callBackData;
       }
       break;
     default:
       {
         // allow json and html only
-        ctx.throw(406, "allow json and html only");
+        ctx.throw(406, 'allow json and html only');
         return;
       }
   }

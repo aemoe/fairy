@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Home from '../view/home.js';
 import Page404 from '../view/404.js';

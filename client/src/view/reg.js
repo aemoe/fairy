@@ -1,6 +1,6 @@
-"use strict";
-import React, {Component} from 'react';
-import ReactDOM, {render} from 'react-dom';
+'use strict';
+import React,{Component} from 'react';
+import {render} from 'react-dom';
 
 import Nav from '../view/nav.js';
 import RegForm from '../view/components/reg_form';
@@ -9,7 +9,6 @@ import logo_en from '../dist/img/text_logo.png';
 import logo_cn from '../dist/img/text_logo_cn.png';
 
 import '../dist/css/reset.css';
-import Style from '../dist/css/style.css';
 import Login from '../dist/css/login.css';
 
 class App extends Component {
@@ -17,6 +16,7 @@ class App extends Component {
     super(props);
   }
   render() {
+    let {history} = this.props;
     return (
       <div>
         <Nav/>
@@ -28,7 +28,7 @@ class App extends Component {
             <img width="58" src={logo_cn}/>
           </p>
         </div>
-        <RegForm history={this.props.history}/>
+        <RegForm history={history}/>
         <div className={Login.form_reg}>
           点击 注册 按钮表示同意
           <a href="#">
@@ -38,6 +38,6 @@ class App extends Component {
       </div>
     );
   }
-};
+}
 
 export default App;

@@ -1,7 +1,6 @@
-"use strict";
-import React, {Component} from 'react';
-import ReactDOM, {render} from 'react-dom';
-
+'use strict';
+import React,{Component} from 'react';
+import {render} from 'react-dom';
 
 import Nav from '../view/nav.js';
 import LoginForm from '../view/components/login_form';
@@ -11,7 +10,6 @@ import logo_cn from '../dist/img/text_logo_cn.png';
 
 import '../dist/css/reset.css';
 import Login from '../dist/css/login.css';
-import Style from '../dist/css/style.css';
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +35,6 @@ class App extends Component {
       </div>
     );
   }
-};
+}
 
 export default App;

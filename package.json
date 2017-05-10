@@ -4,6 +4,7 @@
   "description": "Gitf to a cat that her name is Fairy Mo.",
   "main": "index.js",
   "scripts": {
+    "lint":"./node_modules/.bin/eslint server/**/*.js",
     "koa": "cross-env NODE_ENV=production node ./app.js",
     "dev": "cross-env NODE_ENV=production pm2 start ./app.js  --watch",
     "start": "cd client && npm run build && cd ../  && cross-env NODE_ENV=production pm2 start ./app.js  --watch"
@@ -14,7 +15,7 @@
     "asset-require-hook": "^1.0.2",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.6.5",
-    "babel-eslint": "^6.1.0",
+    "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
@@ -34,6 +35,11 @@
     "bcrypt": "^1.0.2",
     "cross-env": "^4.0.0",
     "css-modules-require-hook": "^4.0.5",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
     "jsonwebtoken": "^7.3.0",
     "koa": "^2.0.0-alpha.8",
     "koa-bodyparser": "^4.1.0",
@@ -57,6 +63,7 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "sequelize": "^4.0.0-2",
-    "trek-captcha": "^0.3.0"
+    "trek-captcha": "^0.3.0",
+    "webpack": "^2.5.1"
   }
 }

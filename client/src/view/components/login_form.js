@@ -1,6 +1,6 @@
-"use strict";
-import React, {Component} from 'react';
-import ReactDOM, {render} from 'react-dom';
+'use strict';
+import React,{Component} from 'react';
+import {render} from 'react-dom';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -23,15 +23,15 @@ const submit = async function submit(values) {
       _this.props.login();
       _this.props.history.push('/');
     }
-  })
-}
+  });
+};
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const {error, handleSubmit, pristine, reset, submitting} = this.props;
+    const {error, handleSubmit, pristine, submitting} = this.props;
     return (
       <form onSubmit={handleSubmit(submit.bind(this))}>
         <div className={error
@@ -63,6 +63,6 @@ class LoginForm extends Component {
       </form>
     );
   }
-};
+}
 
 export default connect(null, actions)(reduxForm({form: 'login_form'})(LoginForm));

@@ -1,7 +1,5 @@
-"use strict";
-import React from 'react';
-import {renderToString, renderToStaticMarkup} from 'react-dom/server';
-import {StaticRouter, matchPath} from 'react-router-dom';
+import {renderToString} from 'react-dom/server';
+import {StaticRouter} from 'react-router-dom';
 import {layout} from '../view/layout.js';
 import {Provider} from 'react-redux';
 import bcrypt from 'bcrypt';
@@ -11,9 +9,9 @@ import App from '../../client/src/view/reg.js';
 const User = db.User;
 
 //get page and switch json and html
-export async function index(ctx, next) {
-  switch (ctx.accepts("json", "html")) {
-    case "html":
+export function index(ctx) {
+  switch (ctx.accepts('json', 'html')) {
+    case 'html':
       {
         //init store
         let loginStore = {
@@ -32,7 +30,7 @@ export async function index(ctx, next) {
         ctx.body = html;
       }
       break;
-    case "json":
+    case 'json':
       {
         let callBackData = {
           'status': 200,
@@ -45,16 +43,16 @@ export async function index(ctx, next) {
     default:
       {
         // allow json and html only
-        ctx.throw(406, "allow json and html only");
+        ctx.throw(406, 'allow json and html only');
         return;
       }
   }
 
-};
+}
 
 //reg user
-export async function reg(ctx, next) {
-  if (ctx.accepts("json", "html") == "json") {
+export async function reg(ctx) {
+  if (ctx.accepts('json', 'html') == 'json') {
     let data = ctx.request.body;
     //If reg data is null,reback some tips
     if (!data.username || !data.password || !data.email) {
@@ -102,7 +100,7 @@ export async function reg(ctx, next) {
               email: data.email
             };
 
-          await User.create(insertData).then(function(user) {
+          await User.create(insertData).then(function() {
             let callBackData = {
               'success': true,
               'status': 200,
@@ -110,7 +108,7 @@ export async function reg(ctx, next) {
               'data': {}
             };
             ctx.body = callBackData;
-          }, function(err) {
+          }, function() {
             let callBackData = {
               'success': false,
               'status': 200,
@@ -125,11 +123,11 @@ export async function reg(ctx, next) {
     }
 
   }
-};
+}
 
 //vaildate uesrname
-export async function vaildate_user(ctx, next) {
-  if (ctx.accepts("json", "html") == "json") {
+export async function vaildate_user(ctx) {
+  if (ctx.accepts('json', 'html') == 'json') {
     let data = ctx.request.body;
     //If reg data is null,reback some tips
     if (data.username) {
@@ -166,10 +164,10 @@ export async function vaildate_user(ctx, next) {
       ctx.body = callBackData;
     }
   }
-};
+}
 
-export async function vaildate_email(ctx, next) {
-  if (ctx.accepts("json", "html") == "json") {
+export async function vaildate_email(ctx) {
+  if (ctx.accepts('json', 'html') == 'json') {
     let data = ctx.request.body;
     //If reg data is null,reback some tips
     if (data.email) {
@@ -206,4 +204,4 @@ export async function vaildate_email(ctx, next) {
       ctx.body = callBackData;
     }
   }
-};
+}

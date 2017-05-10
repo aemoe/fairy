@@ -1,6 +1,6 @@
-"use strict";
-import React, {Component} from 'react';
-import ReactDOM, {render} from 'react-dom';
+'use strict';
+import React,{Component} from 'react';
+import {render} from 'react-dom';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -33,7 +33,7 @@ const asyncValidate = async(values, dispatch, props, field) => {
         }
         validataUsername = false;
       }
-    })
+    });
   }
 
   if (field == 'email') {
@@ -52,7 +52,7 @@ const asyncValidate = async(values, dispatch, props, field) => {
         }
         validataEmail = false;
       }
-    })
+    });
   }
 };
 
@@ -65,46 +65,45 @@ const submit = async function submit(values) {
     } else {
       _this.props.history.push('/login');
     }
-  })
-}
+  });
+};
 
 const validate = values => {
-  const errors = {}
+  const errors = {};
   if (!values.username) {
-    errors.username = '必填'
+    errors.username = '必填';
   } else if (values.username.length > 15) {
-    errors.username = '不能大于15个字符'
+    errors.username = '不能大于15个字符';
   } else if (values.username.length < 5) {
-    errors.username = '不能小于5个字符'
+    errors.username = '不能小于5个字符';
   }
   if (!values.password) {
-    errors.password = '必填'
+    errors.password = '必填';
   } else if (values.password.length > 30) {
-    errors.password = '不能大于30位密码'
+    errors.password = '不能大于30位密码';
   } else if (values.password.length < 5) {
-    errors.password = '不能小于5位密码'
+    errors.password = '不能小于5位密码';
   }
 
   if (!values.repassword) {
-    errors.repassword = '必填'
+    errors.repassword = '必填';
   } else if (values.password != values.repassword) {
-    errors.repassword = '两次密码不同'
+    errors.repassword = '两次密码不同';
   }
 
   if (!values.email) {
-    errors.email = '必填'
+    errors.email = '必填';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = '邮箱格式不正确'
+    errors.email = '邮箱格式不正确';
   }
-  return errors
-}
+  return errors;
+};
 
 const renderField = ({
   input,
   label,
   type,
   meta: {
-    asyncValidating,
     touched,
     error
   }
@@ -119,7 +118,7 @@ class RegForm extends Component {
     super(props);
   }
   render() {
-    const {error, handleSubmit, pristine, reset, submitting} = this.props;
+    const {error, handleSubmit, pristine, submitting} = this.props;
     return (
       <form onSubmit={handleSubmit(submit.bind(this))}>
         <div className={error
@@ -159,7 +158,7 @@ class RegForm extends Component {
       </form>
     );
   }
-};
+}
 
 export default connect(null, actions)(reduxForm({
   form: 'reg_form',
