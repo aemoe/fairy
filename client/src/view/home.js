@@ -27,8 +27,8 @@ class App extends Component {
           </p>
         </div>
         <div className={Home.content}>
-          <h1>创意工坊</h1>
-          <h2>我们推荐了一些好的作品供您食用</h2>
+          <h1>作品列表</h1>
+        <h2>我们推荐了啊啊所大所多一些好的作品供您食用</h2>
 
           <ul className={Home.list}>
             <li>

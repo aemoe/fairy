@@ -9,21 +9,6 @@
   <p>
 </div>
 
-<h2 align="center">框架名字</h2>
-
-###  为什么叫这个名字?
-
-因为这是一份送给一只名叫Fairy Mo(美人)的猫的礼物 ~
-
-<h2 align="center">计划执行</h2>
-
-- [x] 路由同步 React-router及Koa-router同步
-- [x] 模板同步 View层同步,使用react-dom/server实现
-- [x] 数据同步 使用Redux及React-redux实现
-- [x] css-modules同步 保证前后端生成的css-modules相同
-- [x] webpack热加载组件优化
-
-
 <h2 align="center">怎么安装</h2>
 
 开启本地数据库Mysql,并使用phpmyadmin类似的工具在mysql中创建数据库(名字随意之后要填写),之后将mysql中的文件夹sql文件导入数据库, 最后在server/config/db.json中配置mysql的数据库名称和用户名密码即可

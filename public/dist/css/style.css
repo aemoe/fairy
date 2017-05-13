@@ -199,6 +199,115 @@ body {
 .style_avatar_1a-:hover dl {
     display: block;
 }
+body {
+  background: #fff;
+}
+
+.home_banner_54M {
+  height: 300px;
+  border-bottom: 1px solid #eee;
+  color: #626262;
+}
+
+.home_banner_54M p {
+  text-align: center;
+}
+
+.home_banner_text_3hb {
+  padding: 30px 0;
+}
+
+.home_logo_en_Vri {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.home_upload_btn_2jB {
+  border: 1px solid #c9c9c9;
+  width: 110px;
+  background: #ffffff;
+  height: 35px;
+  line-height: 35px;
+  color: #727272;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  font-size: 12px;
+  margin-top: 5px
+}
+
+.home_upload_btn_2jB:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.home_content_23r {
+  color: #626262;
+  text-align: center;
+}
+
+.home_content_23r h1 {
+  font-size: 36px;
+  padding: 40px 0;
+  font-weight: 200;
+}
+
+.home_content_23r h2 {
+  font-size: 13px;
+  font-weight: 200;
+  padding-bottom: 50px;
+}
+
+.home_list__k2 {
+  width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.home_list__k2 li {
+  width: 270px;
+  float: left;
+  margin: 0 30px 30px 0;
+}
+
+.home_list__k2 li img {
+  width: 100%;
+  height: 140px;
+  float: left;
+}
+
+.home_list__k2 li p {
+  line-height: 3em;
+  font-weight: 400;
+}
+
+.home_readmore_3FT {
+  padding: 20px 0;
+}
+
+.home_readmore_3FT a {
+  color: #252525;
+  cursor: pointer;
+}
+
+.home_footer_1Jx {
+  height: 65px;
+  line-height: 65px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 13px;
+  color: #626262;
+}
+._404_wrapper_3S3 {
+    text-align: center;
+    padding-top: 38px;
+    line-height: 2em;
+    font-size: 12px;
+}
+._404_wrapper_3S3 img {
+    margin-bottom: 30px;
+}
 /* login page style */
 
 .login_banner_eub {
@@ -337,115 +446,6 @@ body {
 
 .login_tips_show_2fL {
     display: block;
-}
-body {
-  background: #fff;
-}
-
-.home_banner_54M {
-  height: 300px;
-  border-bottom: 1px solid #eee;
-  color: #626262;
-}
-
-.home_banner_54M p {
-  text-align: center;
-}
-
-.home_banner_text_3hb {
-  padding: 30px 0;
-}
-
-.home_logo_en_Vri {
-  text-align: center;
-  padding-top: 80px;
-}
-
-.home_upload_btn_2jB {
-  border: 1px solid #c9c9c9;
-  width: 110px;
-  background: #ffffff;
-  height: 35px;
-  line-height: 35px;
-  color: #727272;
-  cursor: pointer;
-  border-radius: 5px;
-  outline: none;
-  font-size: 12px;
-  margin-top: 5px
-}
-
-.home_upload_btn_2jB:hover {
-  background: #000;
-  color: #fff;
-  border: 1px solid #000;
-}
-
-.home_content_23r {
-  color: #626262;
-  text-align: center;
-}
-
-.home_content_23r h1 {
-  font-size: 36px;
-  padding: 40px 0;
-  font-weight: 200;
-}
-
-.home_content_23r h2 {
-  font-size: 13px;
-  font-weight: 200;
-  padding-bottom: 50px;
-}
-
-.home_list__k2 {
-  width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.home_list__k2 li {
-  width: 270px;
-  float: left;
-  margin: 0 30px 30px 0;
-}
-
-.home_list__k2 li img {
-  width: 100%;
-  height: 140px;
-  float: left;
-}
-
-.home_list__k2 li p {
-  line-height: 3em;
-  font-weight: 400;
-}
-
-.home_readmore_3FT {
-  padding: 20px 0;
-}
-
-.home_readmore_3FT a {
-  color: #252525;
-  cursor: pointer;
-}
-
-.home_footer_1Jx {
-  height: 65px;
-  line-height: 65px;
-  border-top: 1px solid #eee;
-  text-align: center;
-  font-size: 13px;
-  color: #626262;
-}
-._404_wrapper_3S3 {
-    text-align: center;
-    padding-top: 38px;
-    line-height: 2em;
-    font-size: 12px;
-}
-._404_wrapper_3S3 img {
-    margin-bottom: 30px;
 }
 
 /*# sourceMappingURL=style.css.map*/
