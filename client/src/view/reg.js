@@ -1,6 +1,6 @@
 'use strict';
 import React,{Component} from 'react';
-import {render} from 'react-dom';
+import PropTypes from 'prop-types';
 
 import Nav from '../view/nav.js';
 import RegForm from '../view/components/reg_form';
@@ -39,5 +39,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  history: PropTypes.object
+};
 
 export default App;

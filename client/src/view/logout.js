@@ -1,6 +1,5 @@
 'use strict';
 import React,{Component} from 'react';
-import {render} from 'react-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import * as actions from '../redux/actions/index';

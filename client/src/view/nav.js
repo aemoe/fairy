@@ -1,6 +1,7 @@
 'use strict';
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import defaultAvatar from '../dist/img/avatar/user_1.png';
@@ -47,6 +48,10 @@ class Nav extends Component {
       );
     }
 }
+
+Nav.propTypes = {
+  user: PropTypes.object
+};
 
 function user(state) {
   return {

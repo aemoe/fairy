@@ -1,6 +1,6 @@
 'use strict';
 import React,{Component} from 'react';
-import {render} from 'react-dom';
+import PropTypes from 'prop-types';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -64,5 +64,12 @@ class LoginForm extends Component {
     );
   }
 }
+
+LoginForm.propTypes = {
+  error: PropTypes.object,
+  pristine:PropTypes.bool,
+  handleSubmit:PropTypes.func,
+  submitting:PropTypes.bool
+};
 
 export default connect(null, actions)(reduxForm({form: 'login_form'})(LoginForm));

@@ -1,6 +1,6 @@
 'use strict';
 import React,{Component} from 'react';
-import {render} from 'react-dom';
+import PropTypes from 'prop-types';
 import {Field, reduxForm, SubmissionError} from 'redux-form';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -113,6 +113,13 @@ const renderField = ({
   </div>
 );
 
+renderField.propTypes = {
+  meta:PropTypes.object,
+  type:PropTypes.string,
+  label:PropTypes.string,
+  input:PropTypes.object
+};
+
 class RegForm extends Component {
   constructor(props) {
     super(props);
@@ -159,6 +166,13 @@ class RegForm extends Component {
     );
   }
 }
+
+RegForm.propTypes = {
+  error: PropTypes.object,
+  pristine:PropTypes.bool,
+  handleSubmit:PropTypes.func,
+  submitting:PropTypes.bool
+};
 
 export default connect(null, actions)(reduxForm({
   form: 'reg_form',
