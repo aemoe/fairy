@@ -52,6 +52,7 @@ const config = {
     rules: [
       {
         test: /\.css$/,
+        include: [path.resolve(srcDir, cssDir)],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [

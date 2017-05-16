@@ -49,7 +49,7 @@ const config = {
     rules: [
       {
         test: /\.css$/,
-
+        include: [path.resolve(srcDir, cssDir)],
         use: [
           {
             loader: 'style-loader'
